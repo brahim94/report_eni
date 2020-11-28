@@ -1,0 +1,90 @@
+<odoo>
+
+    <report
+        id="action_report_purchase"
+        model="purchase.order"
+        string="Lettre de Consultation"
+        report_type="qweb-pdf"
+		name="tech_reports_extention.consultation"
+		print_report_name="'Lettre de Consultation'"/>
+
+        <template id="consultation">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+
+            <style>
+                table, th, td.bord {
+                border: 1px  black;
+                border-style: double;
+                
+                }
+                table.center {
+                margin-left:auto; 
+                margin-right:auto;
+                }
+            </style>
+                    <div class="cls_009">
+                    <strong><br> Secrétariat Général </br> 
+                    <br>Division Administrative </br> 
+                    <br>Service Matériel et Marchés </br></strong>
+                    </div>
+                    
+                    <div style="vertical-align:center;text-align: center" class="cls_009">
+                    <strong><h4><u> DEMANDE DE PRIX </u></h4></strong>
+                    </div>
+                    
+                
+                        <table class="center" width="90%">
+                            <tr>
+                                <tr>
+                                    <td style="border-top: 1px double black"><u>DESTINATAIRE  :</u></td>
+                                    <td style="border-top: 1px double black"><u>EXPEDITEUR  :</u></td>
+                                </tr>
+                                <tr>
+                                    <td>Téléphone  :</td>
+                                    <td>Nom  :</td>
+                                </tr>
+                                <tr >
+                                    <td style="height:30px">Fax  :</td>
+                                    <td><br>Tél  :</br>
+                                    <br>Fax/Tél  :</br></td>
+                                </tr>
+                            </tr>
+                            
+                        </table>
+                       <div class="cls_029">
+                                <small><br> Date  : </br>
+                                        <br> Signatue  :</br>
+                                </small>
+                            </div>
+                        <div style="vertical-align:center;text-align: left" class="cls_039">
+                            <h4><strong><i>O</i></strong>bjet	:	Demande de prix concernant « objet »</h4>
+                        </div>
+                        <div style="vertical-align:center;text-align: left" class="cls_039">
+                            <p>J’ai l’honneur de vous faire connaître que l’ENSMR envisage de passer un bon de commande pour</p>
+                            <p> « objet » suivant les prescriptions techniques jointes à cette lettre. </p>
+                        </div>
+                        <div style="vertical-align:center;text-align: left" class="cls_049">
+                            <p>Si vous êtes intéressé par cette commande, vous voudrez bien me faire parvenir, </p>
+                            <p>avant le (sheduled date) à scheduled time,au Bureau du service des marchés et matériels de l’ENSMR, </p>
+                            <p>votre pli cacheté portant l’inscription :<strong><h5> OFFRE DE PRIX POUR </h5></strong></p>
+                            <p> « ». Le pli doit contenir les pièces suivantes : </p>
+                            <p> -	Le devis portant les références du concurrent, dûment signé et cacheté; </p>
+                            <p> -	Copie de la présente lettre dîment signée et cachetée et portant la mention « lue et acceptée »</p>
+
+                        </div>
+                        <div style="vertical-align:center;text-align: left" class="cls_059">
+                            <p>Je porte à votre connaissance que l’évaluation des offres sera effectuée </p><p>sur la base du montant du devis proposé.</p>
+                        </div>
+                    
+                        <div style="vertical-align:center;text-align: left" class="cls_069">
+                            <p>Veuillez agréer, Monsieur, mes salutations distinguées.</p>
+                        </div>
+                    
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>
