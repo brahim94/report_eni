@@ -27,6 +27,7 @@
         # 'security/ir.model.access.csv',
         'views/purchase_view_inherit.xml',
         'report/lettre_consultation.xml',
+        'data/sequence_purchase.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

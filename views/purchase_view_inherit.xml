@@ -11,8 +11,23 @@
                                 <xpath expr="//button[@name='action_rfq_send']" position="after">
                                   <button name="print_purchase" string="Lettre de consultation" type="object" class="oe_highlight"/>
                                 </xpath>
+                                 <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="before">
+                                        <field name="article_number" invisible="1"/>
+                                </xpath>
                         </field>
         </record>
+
+        <!-- <record id="view_purchase_order_line_tech_inherit" model="ir.ui.view">
+                        <field name="name">tech.purchase.line.form.inherit</field>
+                        <field name="model">purchase.order.line</field>
+                        <field name="inherit_id" ref="purchase.purchase_order_line_tree"/>
+                        <field name="arch" type="xml">
+                                <xpath expr="//field[@name='product_id']" position="after">
+                                        <field name="article_number"/>
+                                </xpath>
+                        </field>
+        </record> -->
+
 
 </data>
 </odoo>

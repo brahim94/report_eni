@@ -14,15 +14,30 @@
                 <t t-call="web.external_layout">
 
             <style>
-                table, th, td.bord {
-                border: 1px  black;
-                border-style: double;
+                table, th, td {
+                border: 1px solid black;
                 
                 }
-                table.center {
+                td.center{
+                border: 3px  black;
+                border-style: double;
+                }
+                table.centro {
+            
                 margin-left:auto; 
                 margin-right:auto;
                 }
+                div.a{
+                text-indent: 50px;
+                }
+                br.b{
+                text-indent: 50px;
+                }
+                th.mark, td.mark {
+                background-color: #e8e6e6;
+                color: black;
+                }
+
             </style>
                     <div class="cls_009">
                     <strong><br> Secrétariat Général </br> 
@@ -35,53 +50,100 @@
                     </div>
                     
                 
-                        <table class="center" width="90%">
+                        <table class="centro" width="90%">
                             <tr>
                                 <tr>
-                                    <td style="border-top: 1px double black"><u>DESTINATAIRE  :</u></td>
-                                    <td style="border-top: 1px double black"><u>EXPEDITEUR  :</u></td>
+                                    <td class="center" style="border-bottom: none;border-right: none"><u>DESTINATAIRE  :</u></td>
+                                    <td class="center" style="border-bottom: none;border-left: none"><u>EXPEDITEUR  :</u></td>
                                 </tr>
                                 <tr>
-                                    <td>Téléphone  :</td>
-                                    <td>Nom  :</td>
+                                    <td class="center" style="height:30px;border-top: none;border-bottom: none;border-right: none">Téléphone  :</td>
+                                    <td  class="center" style="height:30px;border-top: none;border-bottom: none;border-left: none">Nom  :</td>
                                 </tr>
-                                <tr >
-                                    <td style="height:30px">Fax  :</td>
-                                    <td><br>Tél  :</br>
-                                    <br>Fax/Tél  :</br></td>
+                                <tr>
+                                    <td class="center" style="border-top: none;border-right: none">Fax  :</td>
+                                    <td class="center" style="height:90px;border-top: none;border-left: none">Tél  :<br>Fax/Tél</br></td>
                                 </tr>
                             </tr>
                             
                         </table>
-                       <div class="cls_029">
+                       <div class="a">
                                 <small><br> Date  : </br>
-                                        <br> Signatue  :</br>
+                                        <br> Signature  :</br>
                                 </small>
-                            </div>
+                        </div>
+                
                         <div style="vertical-align:center;text-align: left" class="cls_039">
-                            <h4><strong><i>O</i></strong>bjet	:	Demande de prix concernant « objet »</h4>
+                            <h4><strong><i>O</i></strong>bjet	:	     Demande de prix concernant « objet »</h4>
                         </div>
-                        <div style="vertical-align:center;text-align: left" class="cls_039">
-                            <p>J’ai l’honneur de vous faire connaître que l’ENSMR envisage de passer un bon de commande pour</p>
-                            <p> « objet » suivant les prescriptions techniques jointes à cette lettre. </p>
+                
+                        <div style="vertical-align:center;text-align: left" class="a">
+                            <p>J’ai l’honneur de vous faire connaître que l’ENSMR envisage de passer un bon de commande 
+                            <br>pour « objet » suivant les prescriptions techniques jointes à cette lettre.</br></p>
                         </div>
-                        <div style="vertical-align:center;text-align: left" class="cls_049">
-                            <p>Si vous êtes intéressé par cette commande, vous voudrez bien me faire parvenir, </p>
-                            <p>avant le (sheduled date) à scheduled time,au Bureau du service des marchés et matériels de l’ENSMR, </p>
-                            <p>votre pli cacheté portant l’inscription :<strong><h5> OFFRE DE PRIX POUR </h5></strong></p>
-                            <p> « ». Le pli doit contenir les pièces suivantes : </p>
-                            <p> -	Le devis portant les références du concurrent, dûment signé et cacheté; </p>
-                            <p> -	Copie de la présente lettre dîment signée et cachetée et portant la mention « lue et acceptée »</p>
-
+                
+                        <div style="vertical-align:center;text-align: left" class="a">
+                            <p>Si vous êtes intéressé par cette commande, vous voudrez bien me faire parvenir,
+                            <br>avant le (sheduled date) à scheduled time,au Bureau du service des marchés et matériels de l’ENSMR, </br>
+                            <br>votre pli cacheté portant l’inscription :<strong> OFFRE DE PRIX POUR :</strong></br></p>
                         </div>
-                        <div style="vertical-align:center;text-align: left" class="cls_059">
-                            <p>Je porte à votre connaissance que l’évaluation des offres sera effectuée </p><p>sur la base du montant du devis proposé.</p>
+                        <div style="vertical-align:center;text-align: left">
+                            <p>Le pli doit contenir les pièces suivantes :
+                            <br> -	Le devis portant les références du concurrent, dûment signé et cacheté </br>
+                            <br> -	Copie de la présente lettre dîment signée et cachetée et portant la mention « lue et acceptée »</br></p>
+                        </div>
+                
+                        <div style="vertical-align:center;text-align: left" class="a">
+                            <p>Je porte à votre connaissance que l’évaluation des offres sera effectuée sur la base du montant du devis proposé.</p>
                         </div>
                     
                         <div style="vertical-align:center;text-align: left" class="cls_069">
                             <p>Veuillez agréer, Monsieur, mes salutations distinguées.</p>
                         </div>
                     
+                    <div class="page"> .
+
+                    <p style="page-break-after:always;"></p>
+                          <div style="vertical-align:center;text-align: left" class="cls_039">
+                            <h4><strong><i>O</i></strong>bjet	:	Demande de prix pour</h4>
+                        </div>
+
+                    <table class="center" style="width:99%">
+                            <thead>
+                                <tr>
+                                    <th class="mark" rowspan="2" style="text-align: center">Article N°</th>
+                                    <th class="mark" rowspan="2" style="text-align: center;width:40%">Désignation des prestations</th>
+                                    <th class="mark" rowspan="2" style="text-align: center" >Unité</th>
+                                    <th class="mark" rowspan="2" style="text-align: center" >Quantité</th>
+                                    <th class="mark" rowspan="2" style="text-align: center">Prix Unitaire (HT)</th>
+                                    <th class="mark" rowspan="2" style="text-align: center">Prix Total (HT)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.order_line" t-as="line">
+                                <tr >
+                                    <td class="bord"><span t-field="line.article_number"/></td>
+                                    <td class="bord"><span t-field="line.name"/></td>                                    
+                                    <td class="bord"><span t-field="line.product_qty"/></td>
+                                    <td class="bord"><span t-field="line.price_unit"/></td>
+                                    <td class="bord"><span t-field="line.article_number"/></td>
+                                    <td class="bord"><span t-field="line.price_subtotal"/></td>
+
+                                </tr>
+                                
+                                 </t>
+                                 <tr>
+                                    <th colspan="5" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TOTAL (HT)</th>
+                                    <td class="bord mark" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_untaxed"/></td>
+                                </tr>
+                            </tbody>
+                        <!-- <tr>
+                                    <td style="height:100px;vertical-align:bottom;border: 1px solid black;border-collapse: collapse;border-bottom: none">Total</td> 
+                        </tr> -->
+                        
+                </table>
+
+                    </div>
                 </t>
             </t>
         </t>
