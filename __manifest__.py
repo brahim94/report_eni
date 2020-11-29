@@ -19,15 +19,22 @@
     'category': 'Uncategorized',
     'version': '0.1',
 
+    "external_dependencies": {
+        'python': ['num2words']
+    },
+
     # any module necessary for this one to work correctly
-    'depends': ['base', 'purchase'],
+    'depends': ['base', 'purchase', 'sale'],
 
     # always loaded
     'data': [
         # 'security/ir.model.access.csv',
         'views/purchase_view_inherit.xml',
-        'report/lettre_consultation.xml',
         'data/sequence_purchase.xml',
+        'report/lettre_consultation.xml',
+        'report/examen_devis.xml',
+        'report/fiche_engagement.xml',
+        'report/bon_execution.xml',
     ],
     # only loaded in demonstration mode
     'demo': [

@@ -1,0 +1,301 @@
+<odoo>
+
+    <report
+        id="action_report_examen"
+        model="purchase.order"
+        string="Examen de Devis"
+        report_type="qweb-pdf"
+		name="tech_reports_extention.examen"
+		print_report_name="'Examen de Devis'"/>
+
+        <template id="examen">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+
+                    <!-- <style>
+                    table.centro {
+                    margin-left:auto; 
+                    margin-right:auto;
+                    }
+                    table, td, th {
+                    border: 1px solid black;
+                    }
+                    td.show{
+                    empty-cells: show;
+                    }
+                    </style> -->
+
+                     <style type = "text/css">
+         table.centro {
+                    margin-left:auto; 
+                    margin-right:auto;
+                    }
+                    
+         
+         table.empty {
+            width:350px;
+            empty-cells:show;
+         }
+         td.empty {
+            padding:15px;
+            border: 1px solid black;
+            
+         }
+         td.bord {
+            border: 1px solid black;
+            
+         }
+         th {
+            border: 1px solid black;
+            }
+        table.centre {
+                    margin-left:auto; 
+                    margin-right:auto;
+                    width:100%;
+                    }
+        .inline { 
+           display: inline; 
+        }
+        th.nobord {
+        border: none;
+         }
+                
+      </style>
+
+                    <div style="vertical-align:center;text-align: left">
+				        Le (date systeme) ……………………, la commission composée de :
+                        <br>    -	M. ……………………… : Chef de la Division Administrative.</br>
+                        <br>    -	M. ……………………… : Représentant le service Utilisateur : ……………………….</br> 
+			        </div>
+
+                    <div style="vertical-align:center;text-align: left">
+                        s’est réunie pour procéder à l’ouverture des plis contenant les devis relatifs à la consultation 
+                        <br>pour « objet » pour le compte de L’ENSMR.</br>  
+			        </div>
+
+                    <div style="vertical-align:center;text-align: left">
+                        La Division Administrative a consulté préalablement les prestataires suivants :  
+			        </div>
+
+                    <table class="centro empty" style="empty-cells: show" width="70%">
+                        <tr>
+                            <tr>
+                                <th style="text-align: center">PRESTATION  :</th>
+                            </tr>
+                            <tr>
+                                <td  class = "empty"> </td>
+                            </tr>
+                            <tr>
+                                <td class = "empty"> </td>
+                            </tr>
+                            <tr>
+                                <td class = "empty"> </td>
+                            </tr>
+                            <tr>
+                                <td class = "empty"> </td>
+                            </tr>
+
+                        </tr>
+                    
+                    </table>
+                     <div style="vertical-align:center;text-align: left">
+                        en fixant la date limite de remise des devis au (date prévue) à 16 h. <br>Les prestataires ayant répondu dans les délais impartis et dont les offres sont les suivants :</br>
+			        </div>
+
+                    <table class="centre empty" >
+                        <tr>
+                            <tr>
+                                <th style="text-align: center" >Prestataire</th>
+                                <th style="text-align: center" width="50%">Montant de l’offre TTC en DH</th>
+                                <th style="text-align: center">Observations</th>
+
+                            </tr>
+                            <tr>
+                                <td  class = "empty"> </td>
+                                <td  class = "empty"> </td>
+                                <td  class = "empty"> </td>
+                            </tr>
+                            <tr>
+                                <td  class = "empty"> </td>
+                                <td  class = "empty"> </td>
+                                <td class = "empty"> </td>
+                            </tr>
+                            <tr>
+                                <td  class = "empty"> </td>
+                                <td  class = "empty"> </td>
+                                <td class = "empty"> </td>
+                            </tr>
+                        </tr>
+                    
+                    </table>
+
+                    <div style="vertical-align:center;text-align: left">
+                       Après examen des montants proposés, la commission décide de proposer à l’ordonnateur <br>de retenir l’offre de la Sté…………………………………………………</br>
+			        </div>
+
+                    <div style="position:absolute;top:800px;text-align:center">
+                            <strong>Signatures des membres de la commission</strong>
+                    </div>
+
+                    <div class="page">
+
+                    <p style="page-break-after:always;"></p>
+                         
+
+                        <table  width="30%">
+                        <tr>
+                            <tr>
+                                <td style="text-align: center">Royaume du Maroc</td>
+                            </tr>
+                            <tr>
+                                <td  style="text-align:center" >*** </td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center" >ECOLE NATIONALE SUPERIEURE</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center" >DES MINES DE RABAT</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center" > ***</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center" > Service Matériels et Marchés</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center" > Imputation : (code et intitulé)</td>
+                            </tr>
+                            <tr>
+                                <td style="text-align:center"> Nature de prestation : (intitulé)</td>
+                            </tr>
+
+                        </tr>
+                    
+                    </table>
+
+                        <div style="position:absolute;left:520px;top:1020px" class="cls_039">
+                        Exercice :
+                        <br>Budget :</br>                
+                        </div>
+                        
+                        <!-- <div style="vertical-align:center;text-align: center" class="cls_039">
+                            BON DE COMMANDE                 
+                        </div>
+                        <div style="position:absolute;left:520px;top:1200px">
+                             N° :                 
+                        </div> -->
+                        <table class="centre" >
+                        <tr>
+                            <tr>
+                                <th class="nobord"></th>
+                                <th class="nobord" style="text-align: center" width="60%">BON DE COMMANDE</th>
+                                <th class="nobord" style="text-align: left">N° :</th>
+                            </tr>
+                             <tr>
+                                <td width="20%">Prestataire :</td>
+                                <td colspan="2"></td>
+                            
+                            </tr>
+                        
+                            <tr>
+                                
+                                <td width="20%">Adresse :</td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                
+                                <td width="20%">Tél : </td>
+                                <td colspan="2"></td>
+                            </tr>
+                            <tr>
+                                
+                                <td width="20%">ICE : </td>
+                                <td colspan="2"></td>
+                            </tr>
+                       
+                        </tr>
+                    
+                    </table>
+
+                    <table class="centre" style="width:99%">
+                            <thead>
+                                <tr>
+                                    <th  rowspan="2" style="text-align: center;width:20%">Prix n°</th>
+                                    <th  rowspan="2" style="text-align: center;width:40%">Désignation</th>
+                                    <th  rowspan="2" style="text-align: center" >Qté</th>
+                                    <th  rowspan="2" style="text-align: center" >PU</th>
+                                    <th  rowspan="2" style="text-align: center">Total HT</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-foreach="o.order_line" t-as="line">
+                                <tr >
+                                    
+                                    <td class="bord"><span t-field="line.product_id"/></td>                                    
+                                    <td class="bord"><span t-field="line.name"/></td>
+                                    <td class="bord"><span t-field="line.product_qty"/></td>
+                                    <td class="bord"><span t-field="line.price_unit"/></td>
+                                    <td class="bord"><span t-field="line.price_subtotal"/></td>
+
+                                </tr>
+                                
+                                 </t>
+                                 <tr>
+                                    <th colspan="4" style="text-align: right;padding:2px; margin:2px">TOTAL (HT) :</th>
+                                    <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_untaxed"/></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="4" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TAUX TVA :</th>
+                                    <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_tax"/></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="4" style="text-align: right;padding:2px; margin:2px">TOTAL (TTC) :</th>
+                                    <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_total"/></td>
+                                </tr>
+                            </tbody>
+                        <!-- <tr>
+                                    <td style="height:100px;vertical-align:bottom;border: 1px solid black;border-collapse: collapse;border-bottom: none">Total</td> 
+                        </tr> -->
+                        
+                </table>
+
+                        <div class="rule">
+                            <strong>Arrêté le présent devis à la somme de   (en lettres)::</strong>
+                            <span t-esc="o.get_amount_in_words()"/>
+                    </div>
+                    <div class="rule">
+                            <strong>Destination: ENSMR</strong>
+                    </div>
+                               
+                    <div style="position:absolute;left:570.99px;top:1800px;text-align:center">
+                            <strong>Document établit par :
+                            <br>Vérifié par :</br>   
+                            </strong>
+                    </div>
+                    
+                      <table class="centre">
+                        <tr>
+                            <tr>
+                                <th class="nobord"></th>
+                                <th class="nobord"> Date d’engagement :</th>
+                                <th class="nobord" >l’Ordonnateur :</th>
+                                
+                            </tr>
+                             <tr>
+                                <td>N° d’engagement :</td>
+                                <td colspan="2"></td>
+                            </tr>
+                            
+                        </tr>
+                    
+                    </table>
+
+                    </div>
+
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

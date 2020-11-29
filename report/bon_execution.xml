@@ -1,0 +1,98 @@
+<odoo>
+
+    <report
+        id="action_report_execution"
+        model="purchase.order"
+        string="Bon d'Execution"
+        report_type="qweb-pdf"
+		name="tech_reports_extention.execution"
+		print_report_name="'Bon d Execution'"/>
+
+        <template id="execution">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+
+                    <style type = "text/css">
+         table.centro {
+                    margin-left:auto; 
+                    margin-right:auto;
+                    }
+                    
+         
+         table.empty {
+            width:350px;
+            empty-cells:show;
+         }
+         td.empty {
+            padding:15px;
+            border: 1px solid black;
+            height:300px
+         }
+         td.bord {
+            border: 1px solid black;
+            
+         }
+         th {
+            border: 1px solid black;
+            }
+        table.centre {
+                    margin-left:auto; 
+                    margin-right:auto;
+                    width:100%;
+                    }
+        .inline { 
+           display: inline; 
+        }
+        th.nobord {
+        border: none;
+         }
+                
+      </style>
+
+                    <div>
+                    <div style="vertical-align:center;text-align: left">
+				        Secrétariat Général 
+                        <br>Division Administrative</br>
+                        <br>Service Matériel et Marchés </br> 
+			        </div>
+                    <div style="vertical-align:center;text-align: right">
+                        Rabat, le:
+			        </div>
+                    </div>
+                    <div style="vertical-align:center;text-align: center" class="cls_009">
+                    <strong><h4> BON D’EXECUTION/BON DE RECEPTION </h4></strong>
+                    </div>
+                     <div style="vertical-align:center;text-align: left">
+				        Réf : BC N° 
+                        <br>Objet : ………</br> 
+			        </div>
+                    <table class="center" style="width:99%">
+                            <thead>
+                                <tr>
+                                    <th class="mark" rowspan="2" style="text-align: center;width:70%">DESIGNATION DES PRESTATIONS</th>
+                                    <th class="mark" rowspan="2" style="text-align: center">QTE</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td  class = "empty"></td>
+                                    <td class = "empty"></td>                                    
+                                    
+                                </tr>
+                                 
+                            </tbody>
+                        <!-- <tr>
+                                    <td style="height:100px;vertical-align:bottom;border: 1px solid black;border-collapse: collapse;border-bottom: none">Total</td> 
+                        </tr> -->
+                        
+                </table>
+
+
+
+                </t>
+            </t>
+        </t>
+    </template>
+
+</odoo>

@@ -37,6 +37,13 @@
                 background-color: #e8e6e6;
                 color: black;
                 }
+                div.s {
+                width: 90%;
+                border: 1px solid;
+                box-shadow: 1px 3px #888888;
+                vertical-align:center
+                text-align:center
+                }
 
             </style>
                     <div class="cls_009">
@@ -94,7 +101,7 @@
                         </div>
                 
                         <div style="vertical-align:center;text-align: left" class="a">
-                            <p>Je porte à votre connaissance que l’évaluation des offres sera effectuée sur la base du montant du devis proposé.</p>
+                            <p>Je porte à votre connaissance que l’évaluation des offres sera effectuée sur <br>la base du montant du devis proposé.</br></p>
                         </div>
                     
                         <div style="vertical-align:center;text-align: left" class="cls_069">
@@ -133,8 +140,16 @@
                                 
                                  </t>
                                  <tr>
-                                    <th colspan="5" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TOTAL (HT)</th>
+                                    <th colspan="5" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TOTAL (HT) :</th>
                                     <td class="bord mark" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_untaxed"/></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="5" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TAUX TVA :</th>
+                                    <td class="bord mark" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_tax"/></td>
+                                </tr>
+                                <tr>
+                                    <th colspan="5" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TOTAL (TTC) :</th>
+                                    <td class="bord mark" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_total"/></td>
                                 </tr>
                             </tbody>
                         <!-- <tr>
@@ -143,7 +158,22 @@
                         
                 </table>
 
+                    <div class="rule">
+                            <strong>Arrêté le présent devis à la somme de   (en lettres)::</strong>
+                            <span t-esc="o.get_amount_in_words()"/>
                     </div>
+                               
+                    <div style="position:absolute;left:570.99px;top:1800px;text-align:center">
+                            <strong>Signature</strong>
+                    </div>
+                    
+                    <div class="s" style="position:absolute;top:1880px">
+                           <strong> Pour toute information veuillez nous contacter par téléphone</strong>
+                    </div>
+                    
+                    </div>
+
+                    
                 </t>
             </t>
         </t>
