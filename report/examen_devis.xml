@@ -60,7 +60,10 @@
         th.nobord {
         border: none;
          }
-                
+         div {
+            margin-top:20px;
+            }
+            
       </style>
 
                     <div style="vertical-align:center;text-align: left">

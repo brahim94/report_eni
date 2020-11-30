@@ -47,6 +47,9 @@
         th.nobord {
         border: none;
          }
+         div {
+                margin-top:20px;
+                }
                 
       </style>
                     <table  width="30%">
@@ -104,11 +107,11 @@
                     <table class="center" style="width:99%">
                             <thead>
                                 <tr>
-                                    <th class="mark" rowspan="2" style="text-align: center">Compte</th>
-                                    <th class="mark" rowspan="2" style="text-align: center">Crédit Budgétaire</th>
-                                    <th class="mark" rowspan="2" style="text-align: center" >Dépense à engager</th>
-                                    <th class="mark" rowspan="2" style="text-align: center" >Montant total des engagements</th>
-                                    <th class="mark" rowspan="2" style="text-align: center">Disponible</th>
+                                    <th  rowspan="2" style="text-align: center">Compte</th>
+                                    <th  rowspan="2" style="text-align: center">Crédit Budgétaire</th>
+                                    <th  rowspan="2" style="text-align: center" >Dépense à engager</th>
+                                    <th  rowspan="2" style="text-align: center" >Montant total des engagements</th>
+                                    <th  rowspan="2" style="text-align: center">Disponible</th>
                                 </tr>
                             </thead>
                             <tbody>

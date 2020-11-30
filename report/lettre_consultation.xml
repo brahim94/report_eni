@@ -30,6 +30,9 @@
                 div.a{
                 text-indent: 50px;
                 }
+                div {
+                margin-top:20px;
+                }        
                 br.b{
                 text-indent: 50px;
                 }
@@ -41,9 +44,9 @@
                 width: 90%;
                 border: 1px solid;
                 box-shadow: 1px 3px #888888;
-                vertical-align:center
-                text-align:center
+                text-align:center;
                 }
+                
 
             </style>
                     <div class="cls_009">
@@ -163,11 +166,11 @@
                             <span t-esc="o.get_amount_in_words()"/>
                     </div>
                                
-                    <div style="position:absolute;left:570.99px;top:1800px;text-align:center">
+                    <div style="position:absolute;left:570.99px;top:1710px;text-align:center">
                             <strong>Signature</strong>
                     </div>
                     
-                    <div class="s" style="position:absolute;top:1880px">
+                    <div class="s" style="position:absolute;left:38px;top:1880px">
                            <strong> Pour toute information veuillez nous contacter par téléphone</strong>
                     </div>
                     

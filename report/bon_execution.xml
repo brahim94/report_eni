@@ -47,6 +47,10 @@
         th.nobord {
         border: none;
          }
+        
+        div.m {
+        margin-top:20px;
+        }
                 
       </style>
 
@@ -56,22 +60,23 @@
                         <br>Division Administrative</br>
                         <br>Service Matériel et Marchés </br> 
 			        </div>
-                    <div style="vertical-align:center;text-align: right">
-                        Rabat, le:
+                    <div style="position:absolute;left:570.99px;top:5.98px">
+                        Rabat, le: 
+                        <!-- <span t-field="o.write_date"/> -->
 			        </div>
                     </div>
-                    <div style="vertical-align:center;text-align: center" class="cls_009">
+                    <div class="m" style="vertical-align:center;text-align: center">
                     <strong><h4> BON D’EXECUTION/BON DE RECEPTION </h4></strong>
                     </div>
-                     <div style="vertical-align:center;text-align: left">
+                     <div class="m" style="vertical-align:center;text-align: left">
 				        Réf : BC N° 
                         <br>Objet : ………</br> 
 			        </div>
                     <table class="center" style="width:99%">
                             <thead>
                                 <tr>
-                                    <th class="mark" rowspan="2" style="text-align: center;width:70%">DESIGNATION DES PRESTATIONS</th>
-                                    <th class="mark" rowspan="2" style="text-align: center">QTE</th>
+                                    <th  rowspan="2" style="text-align: center;width:70%">DESIGNATION DES PRESTATIONS</th>
+                                    <th  rowspan="2" style="text-align: center">QTE</th>
                                 </tr>
                             </thead>
                             <tbody>
