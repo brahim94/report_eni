@@ -46,7 +46,11 @@
                 box-shadow: 1px 3px #888888;
                 text-align:center;
                 }
-                
+                td.empty {
+            
+            border: 1px solid black;
+            
+         }
 
             </style>
                     <div class="cls_009">
@@ -63,16 +67,16 @@
                         <table class="centro" width="90%">
                             <tr>
                                 <tr>
-                                    <td class="center" style="border-bottom: none;border-right: none"><u>DESTINATAIRE  :</u></td>
-                                    <td class="center" style="border-bottom: none;border-left: none"><u>EXPEDITEUR  :</u></td>
+                                    <td class="center" style="border-bottom: none;border-right: none"><u>DESTINATAIRE  :</u><span t-field="o.partner_id"/></td>
+                                    <td class="center" style="border-bottom: none;border-left: none"><u>EXPEDITEUR  :</u><span t-field="o.company_id"/></td>
                                 </tr>
                                 <tr>
-                                    <td class="center" style="height:30px;border-top: none;border-bottom: none;border-right: none">Téléphone  :</td>
-                                    <td  class="center" style="height:30px;border-top: none;border-bottom: none;border-left: none">Nom  :</td>
+                                    <td class="center" style="height:30px;border-top: none;border-bottom: none;border-right: none">Téléphone  :<span t-field="o.partner_id.phone"/></td>
+                                    <td  class="center" style="height:30px;border-top: none;border-bottom: none;border-left: none">Nom  :<span t-field="o.company_id"/></td>
                                 </tr>
                                 <tr>
-                                    <td class="center" style="border-top: none;border-right: none">Fax  :</td>
-                                    <td class="center" style="height:90px;border-top: none;border-left: none">Tél  :<br>Fax/Tél</br></td>
+                                    <td class="center" style="border-top: none;border-right: none">Fax  :<span t-field="o.partner_id.phone"/></td>
+                                    <td class="center" style="height:90px;border-top: none;border-left: none">Tél  :<span t-field="o.company_id.phone"/><br>Fax/Tél <span t-field="o.company_id.phone"/></br></td>
                                 </tr>
                             </tr>
                             
@@ -132,27 +136,27 @@
                             <tbody>
                                 <t t-foreach="o.order_line" t-as="line">
                                 <tr >
-                                    <td class="bord"><span t-field="line.article_number"/></td>
+                                    <td class="bord"><span t-field="line.sequence"/></td>
                                     <td class="bord"><span t-field="line.name"/></td>                                    
                                     <td class="bord"><span t-field="line.product_qty"/></td>
-                                    <td class="bord"><span t-field="line.price_unit"/></td>
-                                    <td class="bord"><span t-field="line.article_number"/></td>
-                                    <td class="bord"><span t-field="line.price_subtotal"/></td>
+                                    <td class="bord"><span t-field="line.product_qty"/></td>
+                                    <td class="bord empty"></td>
+                                    <td class="bord empty"></td>
 
                                 </tr>
                                 
                                  </t>
                                  <tr>
                                     <th colspan="5" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TOTAL (HT) :</th>
-                                    <td class="bord mark" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_untaxed"/></td>
+                                    <td class="bord mark empty" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"></td>
                                 </tr>
                                 <tr>
                                     <th colspan="5" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TAUX TVA :</th>
-                                    <td class="bord mark" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_tax"/></td>
+                                    <td class="bord mark empty" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"></td>
                                 </tr>
                                 <tr>
                                     <th colspan="5" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TOTAL (TTC) :</th>
-                                    <td class="bord mark" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_total"/></td>
+                                    <td class="bord mark empty" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"></td>
                                 </tr>
                             </tbody>
                         <!-- <tr>
@@ -163,7 +167,7 @@
 
                     <div class="rule">
                             <strong>Arrêté le présent devis à la somme de   (en lettres)::</strong>
-                            <span t-esc="o.get_amount_in_words()"/>
+                            <!-- <span t-esc="o.get_amount_in_words()"/> -->
                     </div>
                                
                     <div style="position:absolute;left:570.99px;top:1710px;text-align:center">

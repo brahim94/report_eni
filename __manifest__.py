@@ -24,7 +24,7 @@
     },
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'purchase', 'sale'],
+    'depends': ['base', 'purchase', 'sale', 'wt_purchase_request_extend'],
 
     # always loaded
     'data': [
