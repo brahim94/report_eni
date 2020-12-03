@@ -48,3 +48,10 @@ class tech_sale_order(models.Model):
     
     def print_execution(self):
         return self.env.ref('tech_reports_extention.action_report_execution').report_action(self)
+
+class purchase_riquisition(models.Model):
+    _inherit = 'purchase.requisition'
+#     _description = 'tech_reports_extention.tech_reports_extention'
+
+    def print_consultant_report(self):
+        return self.env.ref('tech_reports_extention.action_report_examen').report_action(self)
