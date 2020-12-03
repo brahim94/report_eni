@@ -82,13 +82,13 @@
                             
                         </table>
                        <div class="a">
-                                <small><br> Date  : </br>
+                                <small><br> Date  : <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/> </br>
                                         <br> Signature  :</br>
                                 </small>
                         </div>
                 
                         <div style="vertical-align:center;text-align: left" class="cls_039">
-                            <h4><strong><i>O</i></strong>bjet	:	     Demande de prix concernant « objet »</h4>
+                            <h4><strong><i>O</i></strong>bjet	:	     Demande de prix concernant « <span t-field="o.requisition_id.consultation_name"/> »</h4>
                         </div>
                 
                         <div style="vertical-align:center;text-align: left" class="a">
@@ -98,8 +98,8 @@
                 
                         <div style="vertical-align:center;text-align: left" class="a">
                             <p>Si vous êtes intéressé par cette commande, vous voudrez bien me faire parvenir,
-                            <br>avant le (sheduled date) à scheduled time,au Bureau du service des marchés et matériels de l’ENSMR, </br>
-                            <br>votre pli cacheté portant l’inscription :<strong> OFFRE DE PRIX POUR :</strong></br></p>
+                            <br>avant le <span t-field="o.requisition_id.line_ids.schedule_date" t-options='{"format": "dd/M/Y"}'/> à <span t-field="o.requisition_id.line_ids.schedule_date" t-options='{"format": "dd/M/Y"}'/>,au Bureau du service des marchés et matériels de l’ENSMR, </br>
+                            <br>votre pli cacheté portant l’inscription :<strong> OFFRE DE PRIX POUR :<span t-field="o.requisition_id.consultation_name"/></strong></br></p>
                         </div>
                         <div style="vertical-align:center;text-align: left">
                             <p>Le pli doit contenir les pièces suivantes :
@@ -119,7 +119,7 @@
 
                     <p style="page-break-after:always;"></p>
                           <div style="vertical-align:center;text-align: left" class="cls_039">
-                            <h4><strong><i>O</i></strong>bjet	:	Demande de prix pour</h4>
+                            <h4><strong><i>O</i></strong>bjet	:	Demande de prix pour <span t-field="o.requisition_id.consultation_name"/></h4>
                         </div>
 
                     <table class="center" style="width:99%">
