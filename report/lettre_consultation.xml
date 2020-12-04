@@ -81,7 +81,7 @@
                             </tr>
                             
                         </table>
-                       <div class="a">
+                       <div>
                                 <small><br> Date  : <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/> </br>
                                         <br> Signature  :</br>
                                 </small>

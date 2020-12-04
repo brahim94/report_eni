@@ -2,7 +2,7 @@
 
     <report
         id="action_report_examen"
-        model="purchase.order"
+        model="purchase.requisition"
         string="Examen de Devis"
         report_type="qweb-pdf"
 		name="tech_reports_extention.examen"
@@ -67,14 +67,14 @@
       </style>
 
                     <div style="vertical-align:center;text-align: left">
-				        Le (date systeme) ……………………, la commission composée de :
+				        Le <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/>, la commission composée de :
                         <br>    -	M. ……………………… : Chef de la Division Administrative.</br>
                         <br>    -	M. ……………………… : Représentant le service Utilisateur : ……………………….</br> 
 			        </div>
 
                     <div style="vertical-align:center;text-align: left">
                         s’est réunie pour procéder à l’ouverture des plis contenant les devis relatifs à la consultation 
-                        <br>pour « objet » pour le compte de L’ENSMR.</br>  
+                        <br>pour « <span t-field="o.consultation_name"/> » pour le compte de L’ENSMR.</br>  
 			        </div>
 
                     <div style="vertical-align:center;text-align: left">
@@ -82,11 +82,11 @@
 			        </div>
 
                     <table class="centro empty" style="empty-cells: show" width="70%">
-                        <tr>
+                        <thead>
                             <tr>
                                 <th style="text-align: center">PRESTATION  :</th>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td  class = "empty"> </td>
                             </tr>
                             <tr>
@@ -97,29 +97,42 @@
                             </tr>
                             <tr>
                                 <td class = "empty"> </td>
-                            </tr>
+                            </tr> -->
 
-                        </tr>
+                        </thead>
+                        
+                        <tbody>
+                            <t t-foreach="o.concurent_details_ids" t-as="line">
+                                <tr>
+                                    <td  class = "empty"> ><span t-field="line.name"/></td>
+                                </tr>
+                            </t>
+                        </tbody>
+                        
                     
                     </table>
                      <div style="vertical-align:center;text-align: left">
-                        en fixant la date limite de remise des devis au (date prévue) à 16 h. <br>Les prestataires ayant répondu dans les délais impartis et dont les offres sont les suivants :</br>
+                        en fixant la date limite de remise des devis au <span t-field="o.line_ids.schedule_date" t-options='{"format": "dd/M/Y"}'/> à 16 h. <br>Les prestataires ayant répondu dans les délais impartis et dont les offres sont les suivants :</br>
 			        </div>
 
                     <table class="centre empty" >
-                        <tr>
+                    <thead>
                             <tr>
                                 <th style="text-align: center" >Prestataire</th>
                                 <th style="text-align: center" width="50%">Montant de l’offre TTC en DH</th>
                                 <th style="text-align: center">Observations</th>
 
                             </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="o.purchase_ids.order_line" t-as="line">
+                                
                             <tr>
-                                <td  class = "empty"> </td>
-                                <td  class = "empty"> </td>
+                                <td  class = "empty"> <span t-field="o.purchase_ids.partner_id"/></td>
+                                <td  class = "empty"> <span t-field="o.purchase_ids.amount_total"/></td>
                                 <td  class = "empty"> </td>
                             </tr>
-                            <tr>
+                            <!-- <tr>
                                 <td  class = "empty"> </td>
                                 <td  class = "empty"> </td>
                                 <td class = "empty"> </td>
@@ -128,13 +141,14 @@
                                 <td  class = "empty"> </td>
                                 <td  class = "empty"> </td>
                                 <td class = "empty"> </td>
-                            </tr>
-                        </tr>
-                    
+                            </tr> -->
+                        
+                        </t>
+                    </tbody>
                     </table>
 
                     <div style="vertical-align:center;text-align: left">
-                       Après examen des montants proposés, la commission décide de proposer à l’ordonnateur <br>de retenir l’offre de la Sté…………………………………………………</br>
+                       Après examen des montants proposés, la commission décide de proposer à l’ordonnateur <br>de retenir l’offre de la Sté<t t-if="o.purchase_ids.state_bc_order in ['purchase']"><span t-field="o.purchase_ids.partner_id.parent_id"/></t></br>
 			        </div>
 
                     <div style="position:absolute;top:800px;text-align:center">

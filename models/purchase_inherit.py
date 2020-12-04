@@ -5,20 +5,10 @@ from odoo import models, fields, api
 
 class tech_reports_extention(models.Model):
     _inherit = 'purchase.order'
-#     _description = 'tech_reports_extention.tech_reports_extention'
 
     def print_purchase(self):
         return self.env.ref('tech_reports_extention.action_report_purchase').report_action(self)
 
-    # def print_examen(self):
-    #     return self.env.ref('tech_reports_extention.action_report_examen').report_action(self)
-
-    # article_number = fields.Char('Article N°')
-
-    # @api.model
-    # def create(self, vals):
-    #     vals['article_number'] = self.env['ir.sequence'].next_by_code('purchase.article') or '/'
-    #     return super(tech_order_line, self).create(vals)
     
     @api.depends('amount_total')
     def get_amount_in_words(self):
@@ -38,10 +28,6 @@ class tech_order_line(models.Model):
 
 class tech_sale_order(models.Model):
     _inherit = 'sale.order'
-#     _description = 'tech_reports_extention.tech_reports_extention'
-
-    def print_sale_order(self):
-        return self.env.ref('tech_reports_extention.action_report_examen').report_action(self)
     
     def print_engagement(self):
         return self.env.ref('tech_reports_extention.action_report_engagement').report_action(self)
@@ -51,7 +37,6 @@ class tech_sale_order(models.Model):
 
 class purchase_riquisition(models.Model):
     _inherit = 'purchase.requisition'
-#     _description = 'tech_reports_extention.tech_reports_extention'
 
     def print_consultant_report(self):
         return self.env.ref('tech_reports_extention.action_report_examen').report_action(self)
