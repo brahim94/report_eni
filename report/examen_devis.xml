@@ -84,7 +84,7 @@
                     <table class="centro empty" style="empty-cells: show" width="70%">
                         <thead>
                             <tr>
-                                <th style="text-align: center">PRESTATION  :</th>
+                                <th style="text-align: center">Prestataire</th>
                             </tr>
                             <!-- <tr>
                                 <td  class = "empty"> </td>
@@ -102,7 +102,7 @@
                         </thead>
                         
                         <tbody>
-                            <t t-foreach="o.concurent_details_ids" t-as="line">
+                            <t t-foreach="o.concurrent_details_ids" t-as="line">
                                 <tr>
                                     <td  class = "empty"> ><span t-field="line.name"/></td>
                                 </tr>
@@ -115,37 +115,27 @@
                         en fixant la date limite de remise des devis au <span t-field="o.line_ids.schedule_date" t-options='{"format": "dd/M/Y"}'/> à 16 h. <br>Les prestataires ayant répondu dans les délais impartis et dont les offres sont les suivants :</br>
 			        </div>
 
-                    <table class="centre empty" >
+                
+                <table class="centre empty">
                     <thead>
                             <tr>
                                 <th style="text-align: center" >Prestataire</th>
                                 <th style="text-align: center" width="50%">Montant de l’offre TTC en DH</th>
                                 <th style="text-align: center">Observations</th>
-
                             </tr>
                     </thead>
                     <tbody>
-                        <t t-foreach="o.purchase_ids.order_line" t-as="line">
+                        <!-- <t t-foreach="o.purchase_ids.order_line" t-as="line"> -->
                                 
                             <tr>
                                 <td  class = "empty"> <span t-field="o.purchase_ids.partner_id"/></td>
                                 <td  class = "empty"> <span t-field="o.purchase_ids.amount_total"/></td>
                                 <td  class = "empty"> </td>
                             </tr>
-                            <!-- <tr>
-                                <td  class = "empty"> </td>
-                                <td  class = "empty"> </td>
-                                <td class = "empty"> </td>
-                            </tr>
-                            <tr>
-                                <td  class = "empty"> </td>
-                                <td  class = "empty"> </td>
-                                <td class = "empty"> </td>
-                            </tr> -->
-                        
-                        </t>
+                
+                        <!-- </t> -->
                     </tbody>
-                    </table>
+                </table>
 
                     <div style="vertical-align:center;text-align: left">
                        Après examen des montants proposés, la commission décide de proposer à l’ordonnateur <br>de retenir l’offre de la Sté<t t-if="o.purchase_ids.state_bc_order in ['purchase']"><span t-field="o.purchase_ids.partner_id.parent_id"/></t></br>
@@ -155,7 +145,7 @@
                             <strong>Signatures des membres de la commission</strong>
                     </div>
 
-                    <div class="page">
+                    <!-- <div class="page">
 
                     <p style="page-break-after:always;"></p>
                          
@@ -195,14 +185,18 @@
                         Exercice :
                         <br>Budget :</br>                
                         </div>
-                        
+                         -->
+                    
+                    
                         <!-- <div style="vertical-align:center;text-align: center" class="cls_039">
                             BON DE COMMANDE                 
                         </div>
                         <div style="position:absolute;left:520px;top:1200px">
                              N° :                 
                         </div> -->
-                        <table class="centre" >
+                    
+                    
+                    <!-- <table class="centre" >
                         <tr>
                             <tr>
                                 <th class="nobord"></th>
@@ -233,9 +227,9 @@
                        
                         </tr>
                     
-                    </table>
+                    </table> -->
 
-                    <table class="centre" style="width:99%">
+                    <!-- <table class="centre" style="width:99%">
                             <thead>
                                 <tr>
                                     <th  rowspan="2" style="text-align: center;width:20%">Prix n°</th>
@@ -271,13 +265,10 @@
                                     <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_total"/></td>
                                 </tr>
                             </tbody>
-                        <!-- <tr>
-                                    <td style="height:100px;vertical-align:bottom;border: 1px solid black;border-collapse: collapse;border-bottom: none">Total</td> 
-                        </tr> -->
-                        
-                </table>
+    
+                </table> -->
 
-                        <div class="rule">
+                        <!-- <div class="rule">
                             <strong>Arrêté le présent devis à la somme de   (en lettres)::</strong>
                             <span t-esc="o.get_amount_in_words()"/>
                     </div>
@@ -308,7 +299,7 @@
                     
                     </table>
 
-                    </div>
+                    </div> -->
 
                 </t>
             </t>
