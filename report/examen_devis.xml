@@ -63,14 +63,53 @@
          div {
             margin-top:20px;
             }
-            
+        div.k{
+            margin-top: 0px; 
+            margin-bottom: 0px; 
+            margin-left: 0px; 
+            margin-right: 0px;
+        }
+
       </style>
 
-                    <div style="vertical-align:center;text-align: left">
+                    <!-- <div class ="k" style="vertical-align:center;text-align: left">
 				        Le <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/>, la commission composée de :
-                        <br>    -	M. ……………………… : Chef de la Division Administrative.</br>
-                        <br>    -	M. ……………………… : Représentant le service Utilisateur : ……………………….</br> 
-			        </div>
+                        <t t-foreach="o.consultation_tender_commission_ids" t-as="line">
+                            <br>     <t t-if="line.partner_type == 'Président' ">
+                                            -	M.    <span t-field="line.employee_id"/> : Chef de la Division Administrative : <span t-field="line.department_id"/></t> </br>
+                        </t>
+                    </div>
+                    <div class ="k" style="vertical-align:center;text-align: left">
+                        <t t-foreach="o.consultation_tender_commission_ids" t-as="line">
+                            <br>     <t t-if="line.partner_type == 'Service utilisateur' ">
+                                            -	M.    <span t-field="line.employee_id"/> : Représentant le service Utilisateur : <span t-field="line.department_id"/></t></br> 
+                        </t>
+                    </div>
+				     -->
+                        <table  width="100%">
+                        <tr>
+                            <tr>
+                                <th></th>
+                                <td>Le, <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/> , la commission composée de : </td>
+                            </tr>
+                            <t t-foreach="o.consultation_tender_commission_ids" t-as="line">
+                                <tr>
+                                    
+                                    <t t-if="line.partner_type == 'Président'  ">
+                                        <th></th>
+                                        <td>  -M. <span t-field="line.employee_id"/>: Chef de la Division Administrative : <span t-field="line.department_id"/></td>
+                                    </t>
+                                </tr>
+                            <tr>    
+                                <t t-if="line.partner_type == 'Service utilisateur' ">
+                                    <th></th>
+                                    <td>  -M. <span t-field="line.employee_id"/> : Représentant le service Utilisateur : <span t-field="line.department_id"/></td>
+                                </t>
+                            </tr>
+                            </t>
+                        </tr>
+                    
+                    </table>
 
                     <div style="vertical-align:center;text-align: left">
                         s’est réunie pour procéder à l’ouverture des plis contenant les devis relatifs à la consultation 
@@ -120,16 +159,16 @@
                     <thead>
                             <tr>
                                 <th style="text-align: center" >Prestataire</th>
-                                <th style="text-align: center" width="50%">Montant de l’offre TTC en DH</th>
-                                <th style="text-align: center">Observations</th>
+                                <th style="text-align: center" >Montant de l’offre TTC en DH</th>
+                                <th style="text-align: center" width="50%">Observations</th>
                             </tr>
                     </thead>
                     <tbody>
                         <!-- <t t-foreach="o.purchase_ids.order_line" t-as="line"> -->
                                 
                             <tr>
-                                <td  class = "empty"> <span t-field="o.purchase_ids.partner_id"/></td>
-                                <td  class = "empty"> <span t-field="o.purchase_ids.amount_total"/></td>
+                                <td  class = "empty" style="text-align: center"> <span t-field="o.purchase_ids.partner_id"/></td>
+                                <td  class = "empty" style="text-align: center"> <span t-field="o.purchase_ids.amount_total"/></td>
                                 <td  class = "empty"> </td>
                             </tr>
                 
@@ -138,7 +177,7 @@
                 </table>
 
                     <div style="vertical-align:center;text-align: left">
-                       Après examen des montants proposés, la commission décide de proposer à l’ordonnateur <br>de retenir l’offre de la Sté<t t-if="o.purchase_ids.state_bc_order in ['purchase']"><span t-field="o.purchase_ids.partner_id.parent_id"/></t></br>
+                       Après examen des montants proposés, la commission décide de proposer à l’ordonnateur <br>de retenir l’offre de la Sté<t t-if="o.purchase_ids.state_bc_order == 'purchase'"><span t-field="o.purchase_ids.company_id"/></t></br>
 			        </div>
 
                     <div style="position:absolute;top:800px;text-align:center">
