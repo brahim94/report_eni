@@ -11,7 +11,7 @@
         <template id="examen">
         <t t-call="web.html_container">
             <t t-foreach="docs" t-as="o">
-                <t t-call="web.external_layout">
+                <t t-call="web.internal_layout">
 
                     <!-- <style>
                     table.centro {
@@ -69,6 +69,10 @@
             margin-left: 0px; 
             margin-right: 0px;
         }
+        table.marg {
+                margin-top:30px;
+                }
+        
 
       </style>
 
@@ -86,7 +90,7 @@
                         </t>
                     </div>
 				     -->
-                        <table  width="100%">
+                        <table class="marg" width="100%">
                         <tr>
                             <tr>
                                 <th class="nobord"></th>
@@ -111,16 +115,16 @@
                     
                     </table>
 
-                    <div style="vertical-align:center;text-align: left">
+                    <div class="marg" style="vertical-align:center;text-align: left">
                         s’est réunie pour procéder à l’ouverture des plis contenant les devis relatifs à la consultation 
                         <br>pour « <span t-field="o.consultation_name"/> » pour le compte de L’ENSMR.</br>  
 			        </div>
 
-                    <div style="vertical-align:center;text-align: left">
+                    <div class="marg" style="vertical-align:center;text-align: left">
                         La Division Administrative a consulté préalablement les prestataires suivants :  
 			        </div>
 
-                    <table class="centro empty" style="empty-cells: show" width="70%">
+                    <table class="centro empty marg" style="empty-cells: show" width="70%">
                         <thead>
                             <tr>
                                 <th style="text-align: center">Prestataire</th>
@@ -150,34 +154,35 @@
                         
                     
                     </table>
-                     <div style="vertical-align:center;text-align: left">
+                     <div class="marg" style="vertical-align:center;text-align: left">
                         en fixant la date limite de remise des devis au <span t-field="o.line_ids.schedule_date" t-options='{"format": "dd/M/Y"}'/> à 16 h. <br>Les prestataires ayant répondu dans les délais impartis et dont les offres sont les suivants :</br>
 			        </div>
 
                 
-                <table class="centre empty">
+                <table class="centre empty marg">
                     <thead>
                             <tr>
                                 <th style="text-align: center" >Prestataire</th>
                                 <th style="text-align: center" >Montant de l’offre TTC en DH</th>
-                                <th style="text-align: center" width="50%">Observations</th>
+                                <th style="text-align: center" width="30%">Observations</th>
                             </tr>
                     </thead>
                     <tbody>
                         <t t-foreach="o.purchase_ids" t-as="line">
-                                
                             <tr>
                                 <td  class = "empty" style="text-align: center"> <span t-field="line.partner_id"/></td>
                                 <td  class = "empty" style="text-align: center"> <span t-field="line.amount_total"/></td>
                                 <td  class = "empty"> </td>
                             </tr>
+                            </t>
+                        <t t-foreach="o.purchase_ids" t-as="line">
                             <tr>
                                 <t t-if="line.state_bc_order == 'purchase'">
-                                <td colspan="3"> Après examen des montants proposés, la commission décide de proposer à l’ordonnateur <br>de retenir l’offre de la Sté</br><span t-field="line.company_id"/></td>
+                                    <td class="marg" colspan="3"> Après examen des montants proposés, la commission décide de proposer à l’ordonnateur <br>de retenir l’offre de la Sté</br><span t-field="line.company_id"/></td>
                                 </t>
                             </tr>
-                
                         </t>
+                        
                     </tbody>
                 </table>
 
@@ -185,7 +190,7 @@
                        Après examen des montants proposés, la commission décide de proposer à l’ordonnateur <br>de retenir l’offre de la Sté<t t-if="o.purchase_ids.state_bc_order == 'purchase'"><span t-field="o.purchase_ids.company_id"/></t></br>
 			        </div> -->
 
-                    <div style="position:absolute;top:800px;text-align:center">
+                    <div class="marg" style="position:absolute;top:800px;text-align:center">
                             <strong>Signatures des membres de la commission</strong>
                     </div>
 
