@@ -175,14 +175,14 @@
                 </table> 
 
                          <div class=" m">
-                            <strong>Arrêté le présent devis à la somme de   (en lettres)::</strong>
-                            <span t-esc="o.get_amount_in_words()"/>
+                            Arrêté le présent devis à la somme de   (en lettres):
+                            <strong><span t-esc="o.get_amount_in_words()"/></strong>
                     </div>
-                    <div class="rule">
+                    <div class="m">
                             <strong>Destination: ENSMR</strong>
                     </div>
                                
-                    <div class=" m" style="position:absolute;top:800px;text-align:center">
+                    <div class="m" style="position:absolute;top:800px;text-align:center">
                             <strong>Document établit par :
                             <br>Vérifié par :</br>   
                             </strong>
@@ -192,12 +192,12 @@
                         <tr>
                             <tr>
                                 <th class="nobord"></th>
-                                <td class="nobord"> Date d’engagement :<span t-field="o.enagagement_date" t-options='{"format": "dd/M/Y"}'/></td>
-                                <td class="nobord" >l’Ordonnateur :</td>
-                                
+                                <td class="nobord"> Date d’engagement : <strong><span t-field="o.enagagement_date" t-options='{"format": "dd/M/Y"}'/></strong></td>
+                                <td class="nobord" style="width:40%"> l’Ordonnateur : </td>
+                            
                             </tr>
-                             <tr>
-                                <td>N° d’engagement : <span t-field="o.engagement_number"/></td>
+                            <tr>
+                                <td> N° d’engagement : <strong><span t-field="o.engagement_number"/></strong></td>
                                 <td colspan="2"></td>
                             </tr>
                             

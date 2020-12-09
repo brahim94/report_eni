@@ -39,14 +39,14 @@
                     </td>
 
                     <td style="border-bottom: 2px solid black;vertical-align: top;text-align: center; width:40%">
-                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 80px;" alt="Logo" t-options='{"widget": "image"}'/> </td>
+                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 100px" alt="Logo" t-options='{"widget": "image"}'/> </td>
 
                      <td style="border-bottom: 2px solid black;vertical-align: right;text-align: center">
                             <small>المملكة المغربية
                             <br>ⵜ ⴰ ⴳ ⵍ ⴷ ⵉ ⵜ   ⵏ    ⵍ ⵎ ⵖ ⵔ ⵉ ⴱ</br>
-                            <br>المدرسة الوطنية العليا للمعادن بالرباط</br></small>
+                            <br>المدرسة الوطنية العليا للمعادن بالرباط</br>
                             <br>ⵜ ⵉ ⵏ ⵎ ⵍ ⵜ ⴰ ⵏ ⴰ ⵎ ⵓ ⵔ ⵜ   ⵜ ⴰ ⵏ  ⴰ ⴼ ⵍ ⵍ ⴰ ⵜ</br>
-                            <br>ⵏ  ⵉ ⵣ ⵓ ⵖ ⴰ ⵕ ⵕ ⴱ ⴰ ⴹ </br>
+                            <br>ⵏ  ⵉ ⵣ ⵓ ⵖ ⴰ ⵕ ⵕ ⴱ ⴰ ⴹ </br></small>
                     
                     </td>
                     
