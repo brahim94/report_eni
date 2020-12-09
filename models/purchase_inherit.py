@@ -7,6 +7,8 @@ class tech_reports_extention(models.Model):
     _inherit = 'purchase.order'
 
     def print_purchase(self):
+        for rec in self:
+            rec.state = 'purchase'
         return self.env.ref('tech_reports_extention.action_report_purchase').report_action(self)
 
     
@@ -40,3 +42,4 @@ class purchase_riquisition(models.Model):
 
     def print_consultant_report(self):
         return self.env.ref('tech_reports_extention.action_report_examen').report_action(self)
+
