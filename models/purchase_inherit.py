@@ -7,8 +7,7 @@ class tech_reports_extention(models.Model):
     _inherit = 'purchase.order'
 
     def print_purchase(self):
-        for rec in self:
-            rec.state = 'purchase'
+        self.write({'state': "sent"})
         return self.env.ref('tech_reports_extention.action_report_purchase').report_action(self)
 
     
@@ -16,6 +15,11 @@ class tech_reports_extention(models.Model):
     def get_amount_in_words(self):
         amount_in_words = self.currency_id.amount_to_text(self.amount_total)
         return amount_in_words
+
+    
+    def print_b_cmd(self):
+        return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
+        
 
 class tech_order_line(models.Model):
     _inherit = 'purchase.order.line'

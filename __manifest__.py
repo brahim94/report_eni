@@ -35,6 +35,7 @@
         'report/examen_devis.xml',
         'report/fiche_engagement.xml',
         'report/bon_execution.xml',
+        'report/bon_cmd.xml',
     ],
     # only loaded in demonstration mode
     'demo': [
