@@ -2,7 +2,7 @@
 
     <report
         id="action_report_b_cmd"
-        model="purchase.order"
+        model="market.execution"
         string="Bon de Commande"
         report_type="qweb-pdf"
 		name="tech_reports_extention.bcmd"
@@ -97,7 +97,7 @@
                      <table class="centre marg" >
                             <tr>
                                
-                                <th  class="nobord" style="text-align: center" >BON DE COMMANDE N° : <span t-field="o.name"/></th>
+                                <th  class="nobord" style="text-align: center" >BON DE COMMANDE N° : <span t-field="o.purchase_order_id_bc.name"/></th>
                             </tr>
                     </table>
 
@@ -105,30 +105,30 @@
                             <tr> 
                              <tr>
                                 <td >Prestataire : </td>
-                                <td><span t-field="o.partner_id"/></td>
+                                <td><span t-field="o.purchase_order_id_bc.partner_id"/></td>
                             </tr>
                         
                             <tr> 
                                 <td  >Adresse : </td>
-                                <td> <t t-if="o.partner_id.street">
-                                        <span t-field="o.partner_id.street"/>
+                                <td> <t t-if="o.purchase_order_id_bc.partner_id.street">
+                                        <span t-field="o.purchase_order_id_bc.partner_id.street"/>
                                     </t>
                                     <t t-if="o.partner_id.city">
-                                        <br><span t-field="o.partner_id.city"/></br> 
+                                        <br><span t-field="o.purchase_order_id_bc.partner_id.city"/></br> 
                                     </t>
-                                    <t t-if="o.partner_id.country_id">                                
-                                    <br> <span t-field="o.partner_id.country_id"/></br>
+                                    <t t-if="o.purchase_order_id_bc.partner_id.country_id">                                
+                                    <br> <span t-field="o.purchase_order_id_bc.partner_id.country_id"/></br>
                                     </t></td>
                             </tr>
                             
                             <tr>    
                                 <td>Tél : </td>
-                                <td> <span t-field="o.partner_id.phone"/></td>
+                                <td> <span t-field="o.purchase_order_id_bc.partner_id.phone"/></td>
                             </tr>
                             <tr>
                                 
                                 <td>ICE : </td>
-                                <td> <span t-field="o.partner_id.ice_ex"/></td>
+                                <td> <span t-field="o.purchase_order_id_bc.partner_id.ice_ex"/></td>
                             </tr>
                         </tr>
                         
@@ -146,7 +146,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <t t-foreach="o.order_line" t-as="line">
+                                <t t-foreach="o.purchase_order_id_bc.order_line" t-as="line">
                                 <tr >
                                     
                                     <td class="bord" style="text-align: center"><span t-field="line.product_id"/></td>                                    
@@ -160,15 +160,15 @@
                                  </t>
                                  <tr>
                                     <th colspan="4" style="text-align: right;padding:2px; margin:2px">TOTAL (HT) :</th>
-                                    <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_untaxed"/></td>
+                                    <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.purchase_order_id_bc.amount_untaxed"/></td>
                                 </tr>
                                 <tr>
                                     <th colspan="4" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TAUX TVA :</th>
-                                    <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_tax"/></td>
+                                    <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.purchase_order_id_bc.amount_tax"/></td>
                                 </tr>
                                 <tr>
                                     <th colspan="4" style="text-align: right;padding:2px; margin:2px">TOTAL (TTC) :</th>
-                                    <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.amount_total"/></td>
+                                    <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.purchase_order_id_bc.amount_total"/></td>
                                 </tr>
                             </tbody>
     
@@ -182,22 +182,22 @@
                             <strong>Destination: ENSMR</strong>
                     </div>
                                
-                    <div style="position:absolute;top:800px;text-align:center">
+                    <div class=" m" style="position:absolute;top:800px;text-align:center">
                             <strong>Document établit par :
                             <br>Vérifié par :</br>   
                             </strong>
                     </div>
                     
-                      <table class="centre">
+                      <table class="centre marg">
                         <tr>
                             <tr>
                                 <th class="nobord"></th>
-                                <th class="nobord"> Date d’engagement :</th>
-                                <th class="nobord" >l’Ordonnateur :</th>
+                                <td class="nobord"> Date d’engagement :<span t-field="o.enagagement_date" t-options='{"format": "dd/M/Y"}'/></td>
+                                <td class="nobord" >l’Ordonnateur :</td>
                                 
                             </tr>
                              <tr>
-                                <td>N° d’engagement :</td>
+                                <td>N° d’engagement : <span t-field="o.engagement_number"/></td>
                                 <td colspan="2"></td>
                             </tr>
                             

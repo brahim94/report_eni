@@ -20,7 +20,7 @@ class tech_reports_extention(models.Model):
     def print_b_cmd(self):
         return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
         
-
+    
 class tech_order_line(models.Model):
     _inherit = 'purchase.order.line'
 
@@ -47,3 +47,13 @@ class purchase_riquisition(models.Model):
     def print_consultant_report(self):
         return self.env.ref('tech_reports_extention.action_report_examen').report_action(self)
 
+class market_execution(models.Model):
+    _inherit = 'market.execution'
+
+    @api.depends('purchase_order_id_bc.amount_total')
+    def get_amount_in_words(self):
+        amount_in_words = self.purchase_order_id_bc.currency_id.amount_to_text(self.purchase_order_id_bc.amount_total)
+        return amount_in_words
+
+    def print_engagement(self):
+        return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
