@@ -59,8 +59,8 @@ class market_execution(models.Model):
         return amount_in_words
 
     def print_engagement(self):
-        return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
-
-    def print_commencement_order(self):
         return self.env.ref('tech_reports_extention.action_report_engagement').report_action(self)
+        
+    def print_commencement_order(self):
+        return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
     

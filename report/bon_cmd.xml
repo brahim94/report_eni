@@ -193,7 +193,7 @@
                             <tr>
                                 <th class="nobord"></th>
                                 <td class="nobord"> Date d’engagement : <strong><span t-field="o.enagagement_date" t-options='{"format": "dd/M/Y"}'/></strong></td>
-                                <td class="nobord" style="width:40%"> l’Ordonnateur : </td>
+                                <td class="nobord" style="width:40%"> l’Ordonnateur : <strong><span t-field="o.follow_up_assured"/></strong></td>
                             
                             </tr>
                             <tr>
