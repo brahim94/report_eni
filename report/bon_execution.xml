@@ -62,30 +62,31 @@
 			        </div>
                     <div style="position:absolute;left:570.99px;top:5.98px">
                         Rabat, le: 
-                        <!-- <span t-field="o.write_date"/> -->
+                        <strong><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d')"/></strong>
 			        </div>
                     </div>
                     <div class="m" style="vertical-align:center;text-align: center">
                     <strong><h4> BON D’EXECUTION/BON DE RECEPTION </h4></strong>
                     </div>
                      <div class="m" style="vertical-align:center;text-align: left">
-				        Réf : BC N° 
-                        <br>Objet : ………</br> 
+				        Réf : BC N° <strong><span t-field="o.name"/></strong>
+                        <br>Objet : <strong><span t-field="o.requisition_id.consultation_name"/></strong></br> 
 			        </div>
-                    <table class="center" style="width:99%">
+                    <table class="center m" style="width:99%">
                             <thead>
-                                <tr>
-                                    <th  rowspan="2" style="text-align: center;width:70%">DESIGNATION DES PRESTATIONS</th>
-                                    <th  rowspan="2" style="text-align: center">QTE</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr >
-                                    <td  class = "empty"></td>
-                                    <td class = "empty"></td>                                    
-                                    
-                                </tr>
-                                 
+                                    <tr>
+                                        <th  rowspan="2" style="text-align: center;width:70%">DESIGNATION DES PRESTATIONS</th>
+                                        <th  rowspan="2" style="text-align: center">QTE</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                <t t-foreach="o.order_line" t-as="line">                                
+                                    <tr >
+                                        <td  class = "empty" style="text-align: center"><span t-field="line.name"/></td>
+                                        <td class = "empty" style="text-align: center"><span t-field="line.product_qty"/></td>                                    
+                                        
+                                    </tr>
+                                </t>                     
                             </tbody>
                         <!-- <tr>
                                     <td style="height:100px;vertical-align:bottom;border: 1px solid black;border-collapse: collapse;border-bottom: none">Total</td> 

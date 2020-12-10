@@ -17,9 +17,12 @@ class tech_reports_extention(models.Model):
         return amount_in_words
 
     
-    def print_b_cmd(self):
-        return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
-        
+    # def print_b_cmd(self):
+    #     return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
+
+    def print_execution(self):
+        return self.env.ref('tech_reports_extention.action_report_execution').report_action(self)
+
     
 class tech_order_line(models.Model):
     _inherit = 'purchase.order.line'
@@ -32,14 +35,14 @@ class tech_order_line(models.Model):
         return super(tech_order_line, self).create(vals)
 
 
-class tech_sale_order(models.Model):
-    _inherit = 'sale.order'
+# class tech_sale_order(models.Model):
+#     _inherit = 'sale.order'
     
-    def print_engagement(self):
-        return self.env.ref('tech_reports_extention.action_report_engagement').report_action(self)
+#     def print_engagement(self):
+#         return self.env.ref('tech_reports_extention.action_report_engagement').report_action(self)
     
-    def print_execution(self):
-        return self.env.ref('tech_reports_extention.action_report_execution').report_action(self)
+#     def print_execution(self):
+#         return self.env.ref('tech_reports_extention.action_report_execution').report_action(self)
 
 class purchase_riquisition(models.Model):
     _inherit = 'purchase.requisition'
@@ -57,3 +60,7 @@ class market_execution(models.Model):
 
     def print_engagement(self):
         return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
+
+    def print_commencement_order(self):
+        return self.env.ref('tech_reports_extention.action_report_engagement').report_action(self)
+    

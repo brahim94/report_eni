@@ -14,13 +14,13 @@
                                 <xpath expr="//button[@name='print_quotation']" position="attributes">
                                   <attribute name="invisible">1</attribute>
                                 </xpath>
-                                 <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="before">
+                                 <!-- <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="before">
                                         <field name="article_number" invisible="1"/>
+                                </xpath> -->
+                                <xpath expr="//button[@name='print_purchase']" position="after">
+                                  <button name="print_execution" string="Bon d'Execution" type="object" class="oe_highlight" states="purchase"/>
                                 </xpath>
-                                <!-- <xpath expr="//button[@name='print_purchase']" position="after">
-                                  <button name="print_b_cmd" string="Bon de commande" type="object" class="oe_highlight" states="purchase"/>
-                                </xpath>
-                                 -->
+                                
                         </field>
         </record>
 

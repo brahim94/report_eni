@@ -2,7 +2,7 @@
 
     <report
         id="action_report_engagement"
-        model="purchase.order"
+        model="market.execution"
         string="Fiche d'Engagement"
         report_type="qweb-pdf"
 		name="tech_reports_extention.engagement"
@@ -85,16 +85,18 @@
                         <tr>
                             <tr>
                                 <th class="nobord" style="text-align: left">Exercice</th>
-                                <td  style="text-align:center" > </td>
+                                <td  style="text-align:center" > <strong><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/></strong></td>
 
                             </tr>
                             <tr>
                                 <th class="nobord" style="text-align: left">Service utilisateur :</th>
-                                <td  style="text-align:center" > </td>
+                                <t t-if="o.purchase_requisition.consultation_tender_commission_ids.partner_type == 'Service utilisateur' ">
+                                <td  style="text-align:center" > <span t-field="o.purchase_requisition.consultation_tender_commission_ids.employee_id"/></td>
+                                </t>
                             </tr>
                             <tr>
                                 <th class="nobord" style="text-align: left">Objet de la dépense :</th>
-                                <td  style="text-align:center" > </td>
+                                <td  style="text-align:center" ><span t-field="o.purchase_requisition.consultation_name"/> </td>
                             </tr>
                             <tr>
                                 <th  class="nobord" style="text-align: left">Intitulé de la rubrique : </th>
@@ -116,10 +118,10 @@
                             </thead>
                             <tbody>
                                 <tr >
-                                    <td  class = "empty"></td>
+                                    <td  class = "empty"><span t-field="o.budget_id"/></td>
                                     <td class = "empty"></td>                                    
                                     <td class = "empty"></td>
-                                    <td class = "empty"></td>
+                                    <td class = "empty"><span t-field="o.engagement_amount"/></td>
                                     <td class = "empty"></td>
 
                                 </tr>
@@ -132,7 +134,7 @@
                 </table>
 
                 <div class="rule">
-                            <strong>Prestataire: </strong>
+                            <strong>Prestataire: <span t-field="o.purchase_order_id_bc.partner_id"/></strong>
                     </div>
                     
 
@@ -145,15 +147,15 @@
                             </tr>
                             <tr>
                                 <th class="nobord" style="text-align: left">Date d’engagement :</th>
-                                <td  style="text-align:center" > </td>
+                                <td  style="text-align:center" > <span t-field="o.enagagement_date" t-options='{"format": "dd/M/Y"}'/></td>
                             </tr>
                             <tr>
                                 <th class="nobord" style="text-align: left">N° Engagement :</th>
-                                <td  style="text-align:center" > </td>
+                                <td  style="text-align:center" > <span t-field="o.engagement_number"/></td>
                             </tr>
                             <tr>
                                 <th  class="nobord" style="text-align: left">Nature des prestations : </th>
-                                <td  style="text-align:center " ></td>
+                                <td  style="text-align:center " ><span t-field="o.nature_bc"/></td>
                             </tr>                           
                         </tr>
                     
