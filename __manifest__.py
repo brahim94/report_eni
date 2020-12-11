@@ -39,6 +39,8 @@
         'report/avis_ao.xml',
         'report/avis_ao_ar.xml',
         'report/engagement.xml',
+        'report/acte_engagement.xml',
+
 
     ],
     # only loaded in demonstration mode

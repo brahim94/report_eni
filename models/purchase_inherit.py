@@ -59,7 +59,9 @@ class purchase_riquisition(models.Model):
     def print_engagement_ap_of(self):
         return self.env.ref('tech_reports_extention.action_report_engagmnt').report_action(self)
     
-
+    def print_act_engagement(self):
+        return self.env.ref('tech_reports_extention.action_report_act_eng').report_action(self)
+    
 class market_execution(models.Model):
     _inherit = 'market.execution'
 
