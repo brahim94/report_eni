@@ -79,8 +79,8 @@
                                     <td  class="center" style="height:30px;border-top: none;border-bottom: none;border-left: none">Nom  :<span t-field="o.company_id"/></td>
                                 </tr>
                                 <tr>
-                                    <td class="center" style="border-top: none;border-right: none">Fax  :<span t-field="o.partner_id.phone"/></td>
-                                    <td class="center" style="height:90px;border-top: none;border-left: none">Tél  :<span t-field="o.company_id.phone"/><br>Fax/Tél <span t-field="o.company_id.phone"/></br></td>
+                                    <td class="center" style="border-top: none;border-right: none">Fax  :<span t-field="o.partner_id.fax"/></td>
+                                    <td class="center" style="height:90px;border-top: none;border-left: none">Tél  :<span t-field="o.company_id.phone"/><br>Fax/Tél <span t-field="o.company_id.fax"/> / <span t-field="o.company_id.phone"/></br></td>
                                 </tr>
                             </tr>
                             
@@ -97,13 +97,13 @@
                 
                         <div style="vertical-align:center;text-align: left" class="a">
                             <p>J’ai l’honneur de vous faire connaître que l’ENSMR envisage de passer un bon de commande 
-                            <br>pour « objet » suivant les prescriptions techniques jointes à cette lettre.</br></p>
+                            <br>pour l'objet susmentionné suivant les prescriptions techniques jointes à cette lettre.</br></p>
                         </div>
                 
                         <div style="vertical-align:center;text-align: left" class="a">
                             <p>Si vous êtes intéressé par cette commande, vous voudrez bien me faire parvenir,
-                            <br>avant le <span t-field="o.requisition_id.line_ids.schedule_date" t-options='{"format": "dd/M/Y"}'/> à <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M')"/>,au Bureau du service des marchés et matériels de l’ENSMR, </br>
-                            <br>votre pli cacheté portant l’inscription :<strong> OFFRE DE PRIX POUR :<span t-field="o.requisition_id.consultation_name"/></strong></br></p>
+                            <br>avant le <span t-field="o.requisition_id.line_ids.schedule_date" t-options='{"format": "dd/M/Y"}'/> à <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M')"/>, au Bureau du service des marchés et matériels de l’ENSMR, </br>
+                            <br>votre pli cacheté portant l’inscription :<strong> OFFRE DE PRIX POUR : <span t-field="o.requisition_id.consultation_name"/></strong></br></p>
                         </div>
                         <div style="vertical-align:center;text-align: left">
                             <p>Le pli doit contenir les pièces suivantes :
@@ -122,7 +122,11 @@
                     <div class="page"> .
 
                     <p style="page-break-after:always;"></p>
-                          <div style="vertical-align:center;text-align: left" class="cls_039">
+                        <div style="vertical-align:center;text-align: center" class="cls_039">
+                            <h4><strong><i>Annexe à la lettre de consultation</i></strong></h4>
+                        </div>
+
+                        <div style="vertical-align:center;text-align: left" class="cls_039">
                             <h4><strong><i>O</i></strong>bjet	:	Demande de prix pour <span t-field="o.requisition_id.consultation_name"/></h4>
                         </div>
 
@@ -170,7 +174,7 @@
                 </table>
 
                     <div class="rule">
-                            <strong>Arrêté le présent devis à la somme de   (en lettres)::</strong>
+                            <strong>Arrêté le présent devis à la somme de   (en lettres): </strong>
                             <!-- <span t-esc="o.get_amount_in_words()"/> -->
                     </div>
                                

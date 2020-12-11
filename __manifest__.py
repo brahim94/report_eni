@@ -36,6 +36,10 @@
         'report/fiche_engagement.xml',
         'report/bon_execution.xml',
         'report/bon_cmd.xml',
+        'report/avis_ao.xml',
+        'report/avis_ao_ar.xml',
+        'report/engagement.xml',
+
     ],
     # only loaded in demonstration mode
     'demo': [

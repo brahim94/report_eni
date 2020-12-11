@@ -14,13 +14,46 @@
                                 <xpath expr="//button[@name='print_quotation']" position="attributes">
                                   <attribute name="invisible">1</attribute>
                                 </xpath>
-                                 <!-- <xpath expr="//field[@name='order_line']/tree/field[@name='product_id']" position="before">
-                                        <field name="article_number" invisible="1"/>
-                                </xpath> -->
                                 <xpath expr="//button[@name='print_purchase']" position="after">
                                   <button name="print_execution" string="Bon d'Execution" type="object" class="oe_highlight" states="purchase"/>
                                 </xpath>
                                 
+                        </field>
+        </record>
+        
+        <record id="view_appel_offre_tech_inherit" model="ir.ui.view">
+                        <field name="name">tech.appel.offre.form.inherit</field>
+                        <field name="model">purchase.requisition</field>
+                        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+                        <field name="arch" type="xml">
+                                <xpath expr="//button[@name='action_open']" position="after">
+                                  <button name="print_appel_offre" string="Avis d'Appel d'Offre" type="object" class="oe_highlight" states="in_progress"/>
+                                  <button name="print_appel_offre_ar" string="Avis d'Appel d'Offre Ar" type="object" class="oe_highlight" states="in_progress"/>
+                                  <button name="print_engagement_ap_of" string="Engagement" type="object" class="oe_highlight" states="in_progress"/>
+
+                                </xpath>
+                        </field>
+        </record>
+
+        <record id="view_res_partner_tech_inherit" model="ir.ui.view">
+                        <field name="name">tech.partner.form.inherit</field>
+                        <field name="model">res.partner</field>
+                        <field name="inherit_id" ref="base.view_partner_form"/>
+                        <field name="arch" type="xml">
+                                <xpath expr="//field[@name='phone']" position="after">
+                                  <field name="fax"/>
+                                </xpath>
+                        </field>
+        </record>
+
+        <record id="view_res_company_tech_inherit" model="ir.ui.view">
+                        <field name="name">tech.company.form.inherit</field>
+                        <field name="model">res.company</field>
+                        <field name="inherit_id" ref="base.view_company_form"/>
+                        <field name="arch" type="xml">
+                                <xpath expr="//field[@name='phone']" position="after">
+                                  <field name="fax"/>
+                                </xpath>
                         </field>
         </record>
 
@@ -39,7 +72,7 @@
                     </td>
 
                     <td style="border-bottom: 2px solid black;vertical-align: top;text-align: center; width:40%">
-                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 100px" alt="Logo" t-options='{"widget": "image"}'/> </td>
+                <img t-if="company.logo" t-att-src="image_data_uri(company.logo)" style="max-height: 140px" alt="Logo" t-options='{"widget": "image"}'/> </td>
 
                      <td style="border-bottom: 2px solid black;vertical-align: right;text-align: center">
                             <small>المملكة المغربية

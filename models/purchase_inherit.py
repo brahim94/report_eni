@@ -50,6 +50,16 @@ class purchase_riquisition(models.Model):
     def print_consultant_report(self):
         return self.env.ref('tech_reports_extention.action_report_examen').report_action(self)
 
+    def print_appel_offre(self):
+        return self.env.ref('tech_reports_extention.action_report_appel_offre').report_action(self)
+
+    def print_appel_offre_ar(self):
+        return self.env.ref('tech_reports_extention.action_report_appel_offre_ar').report_action(self)
+    
+    def print_engagement_ap_of(self):
+        return self.env.ref('tech_reports_extention.action_report_engagmnt').report_action(self)
+    
+
 class market_execution(models.Model):
     _inherit = 'market.execution'
 
@@ -63,4 +73,13 @@ class market_execution(models.Model):
         
     def print_commencement_order(self):
         return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
-    
+
+class res_partner(models.Model):
+    _inherit = 'res.partner'
+
+    fax = fields.Char('Fax')
+
+class res_company(models.Model):
+    _inherit = 'res.company'
+
+    fax = fields.Char('Fax')

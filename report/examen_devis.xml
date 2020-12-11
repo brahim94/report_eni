@@ -129,25 +129,15 @@
                             <tr>
                                 <th style="text-align: center">Prestataire</th>
                             </tr>
-                            <!-- <tr>
-                                <td  class = "empty"> </td>
-                            </tr>
-                            <tr>
-                                <td class = "empty"> </td>
-                            </tr>
-                            <tr>
-                                <td class = "empty"> </td>
-                            </tr>
-                            <tr>
-                                <td class = "empty"> </td>
-                            </tr> -->
-
+                            
                         </thead>
                         
                         <tbody>
-                            <t t-foreach="o.concurrent_details_ids" t-as="line">
+                            <t t-foreach="o.purchase_ids" t-as="line">
                                 <tr>
-                                    <td  class = "empty"><span t-field="line.name"/></td>
+                                    <t t-if="line.state_bc_order != 'draft'">
+                                        <td  class = "empty"><span t-field="line.partner_id"/></td>
+                                    </t>
                                 </tr>
                             </t>
                         </tbody>
@@ -178,7 +168,7 @@
                         <t t-foreach="o.purchase_ids" t-as="line">
                             <tr>
                                 <t t-if="line.state_bc_order == 'purchase'">
-                                    <td class="marg" colspan="3"> Après examen des montants proposés, la commission décide de proposer à l’ordonnateur <br>de retenir l’offre de la Sté</br><span t-field="line.company_id"/></td>
+                                    <td class="marg" colspan="3"> Après examen des montants proposés, la commission décide de proposer à l’ordonnateur <br>de retenir l’offre de la Sté</br><span t-field="line.partner_id"/></td>
                                 </t>
                             </tr>
                         </t>
@@ -186,10 +176,7 @@
                     </tbody>
                 </table>
 
-                    <!-- <div style="vertical-align:center;text-align: left">
-                       Après examen des montants proposés, la commission décide de proposer à l’ordonnateur <br>de retenir l’offre de la Sté<t t-if="o.purchase_ids.state_bc_order == 'purchase'"><span t-field="o.purchase_ids.company_id"/></t></br>
-			        </div> -->
-
+                
                     <div class="marg" style="position:absolute;top:800px;text-align:center">
                             <strong>Signatures des membres de la commission</strong>
                     </div>
