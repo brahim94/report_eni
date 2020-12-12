@@ -41,7 +41,7 @@
         'report/engagement.xml',
         'report/acte_engagement.xml',
         'report/decision_convention.xml',
-
+        'report/presentation.xml',
 
     ],
     # only loaded in demonstration mode

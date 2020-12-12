@@ -77,6 +77,9 @@ class purchase_riquisition(models.Model):
     def print_decision_conv(self):
        return self.env.ref('tech_reports_extention.action_report_decision').report_action(self)
 
+    def print_presentation(self):
+       return self.env.ref('tech_reports_extention.action_report_engagement').report_action(self)
+
 
 class market_execution(models.Model):
     _inherit = 'market.execution'
