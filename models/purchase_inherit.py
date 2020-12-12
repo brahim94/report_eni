@@ -6,6 +6,18 @@ from odoo import models, fields, api
 class tech_reports_extention(models.Model):
     _inherit = 'purchase.order'
 
+    PURCHASE_ORDER_BC_STATE = [
+        ('draft', 'Brouillon'),
+        ('sent', 'Consultation envoyé'),
+        ('to approve', 'To Approve'),
+        ('purchase', 'Consultation répondue'),
+        ('done', 'Locked'),
+        ('cancel', 'Cancelled')
+    ]
+
+    state_bc_order = fields.Selection(PURCHASE_ORDER_BC_STATE, compute='_set_bc_order_state')
+
+
     def print_purchase(self):
         self.write({'state': "sent"})
         return self.env.ref('tech_reports_extention.action_report_purchase').report_action(self)

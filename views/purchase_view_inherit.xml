@@ -17,7 +17,26 @@
                                 <xpath expr="//button[@name='print_purchase']" position="after">
                                   <button name="print_execution" string="Bon d'Execution" type="object" class="oe_highlight" states="purchase"/>
                                 </xpath>
-                                
+                                <xpath expr="//button[@id='bid_confirm']" position="replace">
+                                    <button name="button_confirm" type="object" states="sent" string="Réponse consultation" class="oe_highlight" id="bid_confirm"/>                                    
+                                </xpath>
+                                <xpath expr="//button[@id='draft_confirm']" position="replace">
+                                   <button name="button_confirm" type="object" states="draft" string="Réponse consultation" id="draft_confirm"/> 
+                                </xpath>
+                                <xpath expr="//field[@name='date_order']" position="replace">
+                                    <!-- <div attrs="{'invisible': [('state','=','purchase')]}">
+                                        <label for="date_order" string="Date Bordereau" attrs="{'invisible': [('is_bc_purchase_requisition', '!=', False)]}"/>
+                                        <label for="date_order" string="consultation prévue" attrs="{'invisible': [('is_bc_purchase_requisition', '=', False)]}"/>
+                                    </div> -->
+                                    <field name="date_order" nolabel="1"/>
+                                </xpath>
+                                <!-- <xpath expr="//field[@name='date_order']" position="replace">
+                                     <div attrs="{'invisible': [('state','=','purchase')]}">
+                                        <label for="date_order" string="Date Bordereau" attrs="{'invisible': [('is_bc_purchase_requisition', '!=', False)]}"/>
+                                        <label for="date_order" string="consultation prévue" attrs="{'invisible': [('is_bc_purchase_requisition', '=', False)]}"/>
+                                    </div>
+                                <field name="date_order" nolabel="1" attrs="{'invisible': [('state','=','purchase')]}"/>
+                                </xpath> -->
                         </field>
         </record>
         
@@ -108,40 +127,6 @@
         </xpath>
     </template>
 
-        <!-- <template id="external_layout_header_inherit" inherit_id="web.address_layout">
-                <xpath expr="//div[@class='address row']" position="replace">
-        <div class="header">
-            <div class="row zero_min_height">
-                <div class="col-xs-12">
-                    <div style="border-bottom: 1px solid black;"/>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-6" name="company_address">
-                    <span t-field="company.partner_id" t-field-options="{&quot;widget&quot;: &quot;contact&quot;, &quot;fields&quot;: [&quot;address&quot;, &quot;name&quot;], &quot;no_marker&quot;: true}" style="border-bottom: 1px solid black; display:inline-block;"/>
-                </div>
-                <div class="col-xs-6 text-left">
-                    <img t-if="company.logo" t-att-src="'data:image/png;base64,%s' % company.logo" style="max-height: 45px;"/>
-                </div>
-            </div>
-        </div>
-    </xpath>
-            </template>  -->
-
-        <!-- <record id="view_sale_order_line_tech_inherit" model="ir.ui.view">
-                        <field name="name">tech.sale.line.form.inherit</field>
-                        <field name="model">sale.order</field>
-                        <field name="inherit_id" ref="sale.view_order_form"/>
-                        <field name="arch" type="xml">
-                                 <xpath expr="//button[@name='action_quotation_send']" position="after">
-                                  <button name="print_sale_order" string="Examen de Devis" type="object" class="oe_highlight"/>
-                                  <button name="print_engagement" string="Fiche d'Engagement" type="object" class="oe_highlight"/>
-                                  <button name="print_execution" string="Bon d'Execution" type="object" class="oe_highlight"/>
-                                </xpath>
-                               
-                        </field>
-        </record> -->
-
-
+        
 </data>
 </odoo>

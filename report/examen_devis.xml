@@ -144,9 +144,20 @@
                         
                     
                     </table>
-                     <div class="marg" style="vertical-align:center;text-align: left">
-                        en fixant la date limite de remise des devis au <span t-field="o.line_ids.schedule_date" t-options='{"format": "dd/M/Y"}'/> à 16 h. <br>Les prestataires ayant répondu dans les délais impartis et dont les offres sont les suivants :</br>
-			        </div>
+                    
+                    <table class="centre empty marg">
+                        <t t-foreach="o.purchase_ids" t-as="line">
+                            <tr>
+                                <t t-if="line.state_bc_order == 'purchase'">
+                                     <td class="marg">en fixant la date limite de remise des devis au <span t-field="line.date_order" t-options='{"format": "dd/M/Y"}'/> à 16 h. <br>Les prestataires ayant répondu dans les délais impartis et dont les offres sont les suivants :</br></td> 
+                                </t>
+                            </tr>
+                        </t>                        
+                    </table>
+                    
+                     <!-- <div class="marg" style="vertical-align:center;text-align: left">
+                        en fixant la date limite de remise des devis au <span t-field="o.purchase_ids.date_order" t-options='{"format": "dd/M/Y"}'/> à 16 h. <br>Les prestataires ayant répondu dans les délais impartis et dont les offres sont les suivants :</br>
+			        </div> -->
 
                 
                 <table class="centre empty marg">
@@ -160,11 +171,13 @@
                     <tbody>
                         <t t-foreach="o.purchase_ids" t-as="line">
                             <tr>
-                                <td  class = "empty" style="text-align: center"> <span t-field="line.partner_id"/></td>
-                                <td  class = "empty" style="text-align: center"> <span t-field="line.amount_total"/></td>
-                                <td  class = "empty"> </td>
+                                <t t-if="line.state_bc_order == 'purchase'">
+                                    <td  class = "empty" style="text-align: center"> <span t-field="line.partner_id"/></td>
+                                    <td  class = "empty" style="text-align: center"> <span t-field="line.amount_total"/></td>
+                                    <td  class = "empty"> </td>
+                                </t>
                             </tr>
-                            </t>
+                        </t>
                         <t t-foreach="o.purchase_ids" t-as="line">
                             <tr>
                                 <t t-if="line.state_bc_order == 'purchase'">
