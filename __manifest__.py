@@ -40,6 +40,7 @@
         'report/avis_ao_ar.xml',
         'report/engagement.xml',
         'report/acte_engagement.xml',
+        'report/decision_convention.xml',
 
 
     ],
