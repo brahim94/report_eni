@@ -48,6 +48,9 @@
         'report/complement_dossier.xml',
         'report/attributaire.xml',
         'report/non_retenu.xml',
+        'report/borderau_envoi.xml',
+        'report/approbation.xml',
+        'report/prestation.xml',
 
     ],
     # only loaded in demonstration mode

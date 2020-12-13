@@ -58,6 +58,9 @@
                                   <button name="print_complement" string="complement" type="object" class="oe_highlight" states="in_progress"/>
                                   <button name="print_attributaire" string="Lettre d'Information" type="object" class="oe_highlight" states="in_progress"/>
                                   <button name="print_non_retenu" string="concurrents non retenus" type="object" class="oe_highlight" states="in_progress"/>
+                                  <button name="print_borderau" string="Borderau d envoi" type="object" class="oe_highlight" states="in_progress"/>
+                                  <button name="print_approbation" string="Notification d'Approbation" type="object" class="oe_highlight" states="in_progress"/>
+                                  <button name="print_prestation" string="Ordre de prestation" type="object" class="oe_highlight" states="in_progress"/>
                                 
                                 </xpath>
                         </field>

@@ -98,6 +98,14 @@ class purchase_riquisition(models.Model):
     def print_non_retenu(self):
        return self.env.ref('tech_reports_extention.action_report_non_retenu').report_action(self)
 
+    def print_borderau(self):
+       return self.env.ref('tech_reports_extention.action_report_borderau').report_action(self)
+
+    def print_approbation(self):
+       return self.env.ref('tech_reports_extention.action_report_approbation').report_action(self)
+
+    def print_prestation(self):
+       return self.env.ref('tech_reports_extention.action_report_prestation').report_action(self)
 
 class market_execution(models.Model):
     _inherit = 'market.execution'
