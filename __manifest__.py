@@ -46,6 +46,8 @@
         'report/avis_appel_ar.xml',
         'report/convocation_membres.xml',
         'report/complement_dossier.xml',
+        'report/attributaire.xml',
+        'report/non_retenu.xml',
 
     ],
     # only loaded in demonstration mode

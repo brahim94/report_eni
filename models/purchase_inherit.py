@@ -92,6 +92,13 @@ class purchase_riquisition(models.Model):
     def print_complement(self):
        return self.env.ref('tech_reports_extention.action_report_complement').report_action(self)
 
+    def print_attributaire(self):
+       return self.env.ref('tech_reports_extention.action_report_attributaire').report_action(self)
+
+    def print_non_retenu(self):
+       return self.env.ref('tech_reports_extention.action_report_non_retenu').report_action(self)
+
+
 class market_execution(models.Model):
     _inherit = 'market.execution'
 
