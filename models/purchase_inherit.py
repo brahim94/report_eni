@@ -79,7 +79,18 @@ class purchase_riquisition(models.Model):
 
     def print_presentation(self):
        return self.env.ref('tech_reports_extention.action_report_engagement').report_action(self)
+    
+    def print_lettre_insertion(self):
+       return self.env.ref('tech_reports_extention.action_report_insertion').report_action(self)
 
+    def print_appel_ar(self):
+       return self.env.ref('tech_reports_extention.action_report_appel_ar').report_action(self)
+
+    def print_convocation(self):
+       return self.env.ref('tech_reports_extention.action_report_convocation').report_action(self)
+
+    def print_complement(self):
+       return self.env.ref('tech_reports_extention.action_report_complement').report_action(self)
 
 class market_execution(models.Model):
     _inherit = 'market.execution'

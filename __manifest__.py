@@ -42,6 +42,10 @@
         'report/acte_engagement.xml',
         'report/decision_convention.xml',
         'report/presentation.xml',
+        'report/lettre_insertion.xml',
+        'report/avis_appel_ar.xml',
+        'report/convocation_membres.xml',
+        'report/complement_dossier.xml',
 
     ],
     # only loaded in demonstration mode
