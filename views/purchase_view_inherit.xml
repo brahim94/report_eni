@@ -47,7 +47,7 @@
                         <field name="arch" type="xml">
                                 <xpath expr="//button[@name='action_open']" position="after">
                                   <button name="print_appel_offre" string="Avis d'Appel d'Offre" type="object" class="oe_highlight" states="in_progress"/>
-                                  <button name="print_appel_offre_ar" string="Avis d'Appel d'Offre Ar" type="object" class="oe_highlight" states="in_progress"/>
+                                  <!-- <button name="print_appel_offre_ar" string="Avis d'Appel d'Offre Ar" type="object" class="oe_highlight" states="in_progress"/>
                                   <button name="print_engagement_ap_of" string="Engagement" type="object" class="oe_highlight" states="in_progress"/>
                                   <button name="print_act_engagement" string="Act Engagement" type="object" class="oe_highlight" states="in_progress"/>
                                   <button name="print_decision_conv" string="Decision convention" type="object" class="oe_highlight" states="in_progress"/>
@@ -61,7 +61,7 @@
                                   <button name="print_borderau" string="Borderau d envoi" type="object" class="oe_highlight" states="in_progress"/>
                                   <button name="print_approbation" string="Notification d'Approbation" type="object" class="oe_highlight" states="in_progress"/>
                                   <button name="print_prestation" string="Ordre de prestation" type="object" class="oe_highlight" states="in_progress"/>
-                                
+                                 -->
                                 </xpath>
                         </field>
         </record>
