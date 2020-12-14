@@ -81,26 +81,26 @@
                     <strong><h4>FICHE D'ENGAGEMENT</h4></strong>
                     </div>
                     
-                    <table  width="30%">
+                    <table  width="50%">
                         <tr>
                             <tr>
                                 <th class="nobord" style="text-align: left">Exercice</th>
-                                <td  style="text-align:center" > <strong><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/></strong></td>
+                                <td  style="text-align:left" > <strong><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/></strong></td>
 
                             </tr>
                             <tr>
                                 <th class="nobord" style="text-align: left">Service utilisateur :</th>
-                                <t t-if="o.purchase_requisition.consultation_tender_commission_ids.partner_type == 'Service utilisateur' ">
-                                <td  style="text-align:center" > <span t-field="o.purchase_requisition.consultation_tender_commission_ids.employee_id"/></td>
+                                <t t-if="o.purchase_requisition_bc.consultation_tender_commission_ids.partner_type == 'Service utilisateur' ">
+                                <td  style="text-align:left" > <span t-field="o.purchase_requisition_bc.consultation_tender_commission_ids.employee_id"/></td>
                                 </t>
                             </tr>
                             <tr>
                                 <th class="nobord" style="text-align: left">Objet de la dépense :</th>
-                                <td  style="text-align:center" ><span t-field="o.purchase_requisition.consultation_name"/> </td>
+                                <td  style="text-align:left" ><span t-field="o.purchase_requisition.consultation_name"/> </td>
                             </tr>
                             <tr>
                                 <th  class="nobord" style="text-align: left">Intitulé de la rubrique : </th>
-                                <td  style="text-align:center " ></td>
+                                <td  style="text-align:left"></td>
                             </tr>                           
                         </tr>
                     
@@ -118,11 +118,11 @@
                             </thead>
                             <tbody>
                                 <tr >
-                                    <td  class = "empty"><span t-field="o.budget_id"/></td>
-                                    <td class = "empty"></td>                                    
-                                    <td class = "empty"></td>
-                                    <td class = "empty"><span t-field="o.engagement_amount"/></td>
-                                    <td class = "empty"></td>
+                                    <td style="text-align: center" class = "empty"><span t-field="o.budget_id"/></td>
+                                    <td style="text-align: center" class = "empty"></td>                                    
+                                    <td style="text-align: center" class = "empty"></td>
+                                    <td style="text-align: center" class = "empty"><span t-field="o.engagement_amount"/></td>
+                                    <td style="text-align: center" class = "empty"></td>
 
                                 </tr>
                                  

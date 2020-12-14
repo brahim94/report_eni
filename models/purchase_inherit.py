@@ -36,8 +36,8 @@ class tech_reports_extention(models.Model):
     # def print_b_cmd(self):
     #     return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
 
-    def print_execution(self):
-        return self.env.ref('tech_reports_extention.action_report_execution').report_action(self)
+    # def print_execution(self):
+    #     return self.env.ref('tech_reports_extention.action_report_execution').report_action(self)
 
     
 class tech_order_line(models.Model):
@@ -123,6 +123,9 @@ class market_execution(models.Model):
         return self.env.ref('tech_reports_extention.action_report_engagement').report_action(self)
         
     def print_commencement_order(self):
+        return self.env.ref('tech_reports_extention.action_report_execution').report_action(self)
+    
+    def print_b_cmd(self):
         return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
 
 class res_partner(models.Model):

@@ -2,7 +2,7 @@
 
     <report
         id="action_report_execution"
-        model="purchase.order"
+        model="market.execution"
         string="Bon d'Execution"
         report_type="qweb-pdf"
 		name="tech_reports_extention.execution"
@@ -69,8 +69,8 @@
                     <strong><h4> BON D’EXECUTION/BON DE RECEPTION </h4></strong>
                     </div>
                      <div class="m" style="vertical-align:center;text-align: left">
-				        Réf : BC N° <strong><span t-field="o.name"/></strong>
-                        <br>Objet : <strong><span t-field="o.requisition_id.consultation_name"/></strong></br> 
+				        Réf : BC N° <strong><span t-field="o.purchase_requisition_bc"/></strong>
+                        <br>Objet : <strong><span t-field="o.consultation_name"/></strong></br> 
 			        </div>
                     <table class="center m" style="width:99%">
                             <thead>
@@ -80,7 +80,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                <t t-foreach="o.order_line" t-as="line">                                
+                                <t t-foreach="o.purchase_order_id_bc.order_line" t-as="line">                                
                                     <tr >
                                         <td  class = "empty" style="text-align: center"><span t-field="line.name"/></td>
                                         <td class = "empty" style="text-align: center"><span t-field="line.product_qty"/></td>                                    

@@ -105,6 +105,20 @@
                         </field>
         </record>
 
+        <record id="view_market_execution_tech_inherit" model="ir.ui.view">
+                        <field name="name">market.execution.form.inherit</field>
+                        <field name="model">market.execution</field>
+                        <field name="inherit_id" ref="wt_purchase_request_extend.view_market_execution_form"/>
+                        <field name="arch" type="xml">
+                                <xpath expr="//field[@name='purchase_order_id_bc']" position="replace">
+                                    <field name="purchase_order_id_bc" domain="[('requisition_id', '=', purchase_requisition_bc), ('requisition_id', '!=', False), ('state', '=', 'done')]" attrs="{'invisible': [('is_bc_execution', '=', False), ('is_execution_convention', '=', False)]}"/>
+                                </xpath>
+                        <xpath expr="//button[@name='print_commencement_order']" position="after">
+                                  <button name="print_b_cmd" string="Bon de commande" type="object" class="oe_highlight" states="engagement"/>        
+                        </xpath>
+                        </field>
+        </record>
+
             <template id="internal_layout_header_inherit" inherit_id="web.internal_layout">
                 <xpath expr="//div[@class='header']" position="replace">
                     <div class="header">
