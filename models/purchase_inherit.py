@@ -11,18 +11,22 @@ class tech_reports_extention(models.Model):
         ('sent', 'Consultation envoyé'),
         ('to approve', 'To Approve'),
         ('purchase', 'Consultation répondue'),
-        ('done', 'Locked'),
+        ('done', 'Fournisseur choisi'),
         ('cancel', 'Cancelled')
     ]
 
     state_bc_order = fields.Selection(PURCHASE_ORDER_BC_STATE, compute='_set_bc_order_state')
 
+    def action_fournisseur_choisi(self):
+        return self.write({'state': "done"})
+
+    def action_back_reponse(self):
+        return self.write({'state': "purchase"})
 
     def print_purchase(self):
         self.write({'state': "sent"})
         return self.env.ref('tech_reports_extention.action_report_purchase').report_action(self)
 
-    
     @api.depends('amount_total')
     def get_amount_in_words(self):
         amount_in_words = self.currency_id.amount_to_text(self.amount_total)

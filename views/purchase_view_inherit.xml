@@ -8,12 +8,7 @@
                         <field name="model">purchase.order</field>
                         <field name="inherit_id" ref="purchase.purchase_order_form"/>
                         <field name="arch" type="xml">
-                                <!-- <xpath expr="//button[@name='print_quotation']" position="attributes">
-                                  <attribute name="invisible">1</attribute>
-                                    <attribute name="attrs">{'invisible': [('state', 'in', ('draft','sent'))]}</attribute>
-                                    
-                                    <attribute name="attrs">{'invisible': [('state', '==', 'sent')]}</attribute>
-                                </xpath> -->
+                               
                                 <xpath expr="//form/header/button[3]" position="attributes">
                                   <attribute name="invisible">1</attribute>
                                 </xpath>
@@ -24,15 +19,21 @@
                                 <xpath expr="//button[@name='action_rfq_send']" position="after">
                                   <button name="print_purchase" string="Lettre de consultation" type="object" class="oe_highlight" states="draft"/>
                                 </xpath>
-                                
-                                <!-- <xpath expr="//button[@name='print_quotation']" position="attributes">
-                                  <attribute name="invisible">1</attribute> -->
-                                    <!-- <attribute name="attrs">{'invisible': [('state', '==', 'draft')]}</attribute>                                
-                                </xpath> -->
-                                                                
                                 <xpath expr="//button[@name='print_quotation']" position="after">
-                                  <button name="print_execution" string="Bon d'Execution" type="object" class="oe_highlight" states="purchase"/>
+                                  <button name="action_fournisseur_choisi" string="Fournisseur choisi" type="object" class="oe_highlight" states="purchase"/>
                                 </xpath>
+
+                                <xpath expr="//button[@name='action_fournisseur_choisi']" position="after">
+                                  <button name="print_execution" string="Bon d'Execution" type="object" class="oe_highlight" states="done"/>
+                                </xpath>                                
+                               
+                                <xpath expr="//field[@name='state_bc_order']" position="replace">
+                                    <field name="state_bc_order" widget="statusbar" statusbar_visible="draft,sent,purchase,done" readonly="1" attrs="{'invisible': [('is_bc_purchase_requisition', '=', False)]}"/>
+                                </xpath>
+                                <xpath expr="//button[@name='print_execution']" position="replace">
+                                    <button name="action_back_reponse" string="Annuler l'attribution" type="object" states="done"/>
+                                </xpath>                                
+                               
                                 <xpath expr="//button[@id='bid_confirm']" position="replace">
                                     <button name="button_confirm" type="object" states="sent" string="Réponse consultation" class="oe_highlight" id="bid_confirm"/>                                    
                                 </xpath>
