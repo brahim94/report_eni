@@ -102,7 +102,7 @@
                 
                         <div style="vertical-align:center;text-align: left" class="a">
                             <p>Si vous êtes intéressé par cette commande, vous voudrez bien me faire parvenir,
-                            <br>avant le <span t-field="o.requisition_id.line_ids.schedule_date" t-options='{"format": "dd/M/Y"}'/> à <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M')"/>, au Bureau du service des marchés et matériels de l’ENSMR, </br>
+                            <br>avant le <span t-field="o.date_order" t-options='{"format": "dd/M/Y"}'/> à <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%H:%M')"/>, au Bureau du service des marchés et matériels de l’ENSMR, </br>
                             <br>votre pli cacheté portant l’inscription :<strong> OFFRE DE PRIX POUR : <span t-field="o.requisition_id.consultation_name"/></strong></br></p>
                         </div>
                         <div style="vertical-align:center;text-align: left">
