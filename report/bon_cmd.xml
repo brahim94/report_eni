@@ -89,8 +89,8 @@
                     </table>
 
                         <div style="position:absolute;left:520px;top:20px" class="cls_039">
-                        Exercice : <span t-field="o.nature_id"/>
-                        <br>Budget : <span t-field="o.tech_budget_id.list_of_years"/></br>                
+                        Exercice : <span t-field="o.tech_budget_id.list_of_years"/>
+                        <br>Budget : <span t-field="o.tech_budget_id"/></br>                
                         </div>
                                             
                     
@@ -179,10 +179,10 @@
                             <strong><span t-esc="o.get_amount_in_words()"/></strong>
                     </div>
                     <div class="m">
-                            <strong>Destination: ENSMR</strong>
+                            <strong>Destination: <span t-field="o.purchase_order_id_bc.partner_id"/></strong>
                     </div>
                                
-                    <div class="m" style="position:absolute;top:800px;text-align:center">
+                    <div class="m" style="position:absolute;top:820px;text-align:center">
                             <strong>Document établit par :
                             <br>Vérifié par :</br>   
                             </strong>
@@ -191,14 +191,16 @@
                       <table class="centre marg">
                         <tr>
                             <tr>
-                                <th class="nobord"></th>
-                                <td class="nobord"> Date d’engagement : <strong><span t-field="o.enagagement_date" t-options='{"format": "dd/M/Y"}'/></strong></td>
+                                <td class="nobord"></td>
+                                <td style="text-align: center" class="nobord" colspan="2"> Date d’engagement : <strong><span t-field="o.enagagement_date" t-options='{"format": "dd/M/Y"}'/></strong></td>
                                 <td class="nobord" style="width:40%"> l’Ordonnateur : <strong><span t-field="o.follow_up_assured"/></strong></td>
                             
                             </tr>
                             <tr>
-                                <td> N° d’engagement : <strong><span t-field="o.engagement_number"/></strong></td>
-                                <td colspan="2"></td>
+                                <td></td>
+                                <td style="text-align: center" colspan="2"> N° d’engagement : <strong><span t-field="o.engagement_number"/></strong></td>
+                                <td></td>
+                                <td></td>
                             </tr>
                             
                         </tr>

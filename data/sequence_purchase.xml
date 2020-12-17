@@ -8,6 +8,16 @@
             <field name="prefix"></field>
             <field name="padding" eval="2"/>
         </record>
+        <record id="seq_market_enga" model="ir.sequence">
+            <field name="name">Market Engag</field>
+            <field name="code">market.engag</field>
+            <field name="prefix"></field>
+            <field name="padding">6</field>
+            <field name="company_id" eval="False"></field>
+        </record>
+
 
  </data>
+
+ 
 </odoo>

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from odoo import models, fields, api
+from odoo import models, fields, api, _ 
 
 
 class tech_reports_extention(models.Model):
@@ -120,8 +120,17 @@ class market_execution(models.Model):
         return amount_in_words
 
     def print_engagement(self):
+        # if self.name:
+        #     if self.engagement_number == _('New') or self.engagement_number == 'New':
+        #         self.write({'engagement_number': self.env['ir.sequence'].next_by_code('market.engag')})
+        #     return True
         return self.env.ref('tech_reports_extention.action_report_engagement').report_action(self)
         
+    @api.model
+    def create(self, vals):
+        vals['engagement_number'] = self.env['ir.sequence'].next_by_code('market.engag') or '/'
+        return super(market_execution, self).create(vals)
+
     def print_commencement_order(self):
         return self.env.ref('tech_reports_extention.action_report_execution').report_action(self)
     
