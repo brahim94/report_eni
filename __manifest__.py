@@ -17,14 +17,14 @@
     # Check https://github.com/odoo/odoo/blob/13.0/odoo/addons/base/data/ir_module_category_data.xml
     # for the full list
     'category': 'Uncategorized',
-    'version': '0.3',
+    'version': '0.4',
 
     "external_dependencies": {
         'python': ['num2words']
     },
 
     # any module necessary for this one to work correctly
-    'depends': ['base', 'purchase', 'sale', 'wt_purchase_request_extend', 'purchase_requisition', 'web'],
+    'depends': ['base', 'purchase', 'sale', 'wt_purchase_request_extend', 'purchase_requisition', 'web', 'tech_budget'],
 
     # always loaded
     'data': [
