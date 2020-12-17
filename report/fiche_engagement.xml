@@ -85,22 +85,23 @@
                         <tr>
                             <tr>
                                 <th class="nobord" style="text-align: left">Exercice</th>
-                                <td  style="text-align:left" > <strong><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/></strong></td>
+                                <!-- <td  style="text-align:left" > <strong><span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y')"/></strong></td> -->
+                                <td  style="text-align:left" width="30%"> <strong><span t-field="o.tech_budget_id.list_of_years"/></strong></td>
 
                             </tr>
                             <tr>
-                                <th class="nobord" style="text-align: left">Service utilisateur :</th>
+                                <th class="nobord" style="text-align: left" width="30%">Service utilisateur :</th>
                                 <t t-if="o.purchase_requisition_bc.consultation_tender_commission_ids.partner_type == 'Service utilisateur' ">
-                                <td  style="text-align:left" > <span t-field="o.purchase_requisition_bc.consultation_tender_commission_ids.employee_id"/></td>
+                                <td  style="text-align:left" > <strong><span t-field="o.purchase_requisition_bc.consultation_tender_commission_ids.department_id"/></strong></td>
                                 </t>
                             </tr>
                             <tr>
-                                <th class="nobord" style="text-align: left">Objet de la dépense :</th>
-                                <td  style="text-align:left" ><span t-field="o.purchase_requisition.consultation_name"/> </td>
+                                <th class="nobord" style="text-align: left" width="30%">Objet de la dépense :</th>
+                                <td  style="text-align:left" ><strong><span t-field="o.consultation_name"/></strong> </td>
                             </tr>
                             <tr>
-                                <th  class="nobord" style="text-align: left">Intitulé de la rubrique : </th>
-                                <td  style="text-align:left"></td>
+                                <th  class="nobord" style="text-align: left" width="30%">Intitulé de la rubrique : </th>
+                                <td  style="text-align:left"><strong><span t-field="o.rubrique_id"/></strong></td>
                             </tr>                           
                         </tr>
                     
@@ -118,11 +119,11 @@
                             </thead>
                             <tbody>
                                 <tr >
-                                    <td style="text-align: center" class = "empty"><span t-field="o.budget_id"/></td>
-                                    <td style="text-align: center" class = "empty"></td>                                    
-                                    <td style="text-align: center" class = "empty"></td>
+                                    <td style="text-align: center" class = "empty"><span t-field="o.rubrique_id.code"/></td>
+                                    <td style="text-align: center" class = "empty"><span t-field="o.credit_inscrit"/></td>                                    
                                     <td style="text-align: center" class = "empty"><span t-field="o.engagement_amount"/></td>
-                                    <td style="text-align: center" class = "empty"></td>
+                                    <td style="text-align: center" class = "empty"><span t-field="o.total_engage"/></td>
+                                    <td style="text-align: center" class = "empty"><span t-field="o.credit_disponible"/></td>
 
                                 </tr>
                                  
@@ -142,28 +143,28 @@
                         <tr>
                             <tr>
                                 <th class="nobord" style="text-align: left">Visa d’engagement :</th>
-                                <td  style="text-align:center" > </td>
+                                <td  style="text-align:left" > </td>
 
                             </tr>
                             <tr>
                                 <th class="nobord" style="text-align: left">Date d’engagement :</th>
-                                <td  style="text-align:center" > <span t-field="o.enagagement_date" t-options='{"format": "dd/M/Y"}'/></td>
+                                <td  style="text-align:left" > <span t-field="o.enagagement_date" t-options='{"format": "dd/M/Y"}'/></td>
                             </tr>
                             <tr>
                                 <th class="nobord" style="text-align: left">N° Engagement :</th>
-                                <td  style="text-align:center" > <span t-field="o.engagement_number"/></td>
+                                <td  style="text-align:left" > <span t-field="o.engagement_number"/></td>
                             </tr>
                             <tr>
                                 <th  class="nobord" style="text-align: left">Nature des prestations : </th>
-                                <td  style="text-align:center " ><span t-field="o.nature_bc"/></td>
+                                <td  style="text-align:left" ><span t-field="o.nature_id"/></td>
                             </tr>                           
                         </tr>
                     
                     </table>
 
                     <div style="position:absolute;left:570.99px;top:800px;text-align:center">
-                            <h4>LE DIRECTEUR   
-                            </h4>
+                            <strong><h5>LE DIRECTEUR   
+                            </h5></strong>
                     </div>
     
                     <div style="position:absolute;top:870px;text-align:center">
