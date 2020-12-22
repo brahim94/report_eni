@@ -68,13 +68,13 @@
             </div>
 
             <div style="vertical-align:center;text-align: center" class="cls_009">
-                <strong><h4><u> Avis d’appel d’offres ouvert sur offres de prix N° (1) </u></h4></strong>
+                <strong><h4><u> Avis d’appel d’offres ouvert sur offres de prix N° <span t-field="o.tender_number"/> </u></h4></strong>
             </div>
                     
             <div style="vertical-align:center;text-align: left" class="a">
-                <p>Le (date soumission) à …. Heures , il sera procédé, dans la salle de réunions de l’Ecole Nationale Supérieure 
+                <p>Le <span t-field="o.submission_date" t-options='{"format": "dd/M/Y"}'/> à <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%HH:%MM')"/> , il sera procédé, dans la salle de réunions de l’Ecole Nationale Supérieure 
                 <br> des Mines de Rabat sise Avenue Hadj Ahmed Cherkaoui Agdal-Rabat à l’ouverture des plis relatifs </br>
-                <br>à l’Appel d’Offres ouvert sur offres de prix ayant pour objet : « Objet de l’appel d’offres » ; en Lot unique ou en X lots.</br> </p>
+                <br>à l’Appel d’Offres ouvert sur offres de prix ayant pour objet : « <span t-field="o.project_scope"/> » ; <t t-if="o.lot_type == 'lot_unique'"> en Lot unique</t> <t t-if="o.lot_type == 'lot_multiple'">ou en <span t-field="o.lot_number"/> lots.</t></br> </p>
             </div>
                 
             <div style="vertical-align:center;text-align: left" >
@@ -97,15 +97,15 @@
                             </tr>
                     </thead>
                     <tbody>
-                        <!-- <t t-foreach="o.purchase_ids" t-as="line"> -->
+                        <t t-foreach="o.lot_details_ids" t-as="line">
                             <tr>
-                                <td  class = "empty" style="text-align: center"> </td>
-                                <td  class = "empty" style="text-align: center"> </td>
-                                <td  class = "empty"> </td>
-                                <td  class = "empty"> </td>
+                                <td  class = "empty" style="text-align: center"><span t-field="line.n_lot"/> </td>
+                                <td  class = "empty" style="text-align: center"><span t-field="line.object_name"/> </td>
+                                <td  class = "empty" style="text-align: center"><span t-field="line.caution"/> </td>
+                                <td  class = "empty" style="text-align: center"><span t-field="line.estimated_price"/> </td>
 
                             </tr>
-                        <!-- </t> -->
+                        </t>
                         
                     </tbody>
                 </table>
