@@ -41,10 +41,6 @@
                                    <button name="button_confirm" type="object" states="draft" string="Réponse consultation" id="draft_confirm"/> 
                                 </xpath>
                                 <xpath expr="//field[@name='date_order']" position="replace">
-                                    <!-- <div attrs="{'invisible': [('state','=','purchase')]}">
-                                        <label for="date_order" string="Date Bordereau" attrs="{'invisible': [('is_bc_purchase_requisition', '!=', False)]}"/>
-                                        <label for="date_order" string="consultation prévue" attrs="{'invisible': [('is_bc_purchase_requisition', '=', False)]}"/>
-                                    </div> -->
                                     <field name="date_order" nolabel="1"/>
                                 </xpath>
                                 <!-- <xpath expr="//field[@name='date_order']" position="replace">
@@ -54,6 +50,10 @@
                                     </div>
                                 <field name="date_order" nolabel="1" attrs="{'invisible': [('state','=','purchase')]}"/>
                                 </xpath> -->
+                                <xpath expr="//field[@name='partner_ref']" position="after">
+                                    <field name="lot_number"/>
+                                </xpath>
+                                
                         </field>
         </record>
         
@@ -63,13 +63,13 @@
                         <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
                         <field name="arch" type="xml">
                                 <xpath expr="//button[@name='action_open']" position="after">
-                                  <button name="print_appel_offre" string="Avis d'Appel d'Offre" type="object" class="oe_highlight" states="publication"/>
+                                  <!-- <button name="print_appel_offre" string="Avis d'Appel d'Offre" type="object" class="oe_highlight" states="publication"/> -->
                                    <!-- <button name="print_appel_offre_ar" string="Avis d'Appel d'Offre Ar" type="object" class="oe_highlight" states="in_progress"/> -->
-                                  <button name="print_engagement_ap_of" string="Engagement" type="object" class="oe_highlight" states="in_progress"/>
+                                  <!-- <button name="print_engagement_ap_of" string="Engagement" type="object" class="oe_highlight" states="in_progress"/> -->
                                   <!-- <button name="print_act_engagement" string="Act Engagement" type="object" class="oe_highlight" states="in_progress"/> -->
-                                  <button name="print_decision_conv" string="Decision convention" type="object" class="oe_highlight" states="in_progress"/>
+                                  <!-- <button name="print_decision_conv" string="Decision convention" type="object" class="oe_highlight" states="in_progress"/> -->
                                   <!-- <button name="print_presentation" string="Presentation" type="object" class="oe_highlight" states="in_progress"/> -->
-                                  <button name="print_lettre_insertion" string="Lettre insertion" type="object" class="oe_highlight" states="in_progress"/>
+                                  <!-- <button name="print_lettre_insertion" string="Lettre insertion" type="object" class="oe_highlight" states="in_progress"/> -->
                                  <!-- <button name="print_appel_ar" string="Avis Appel Offre(ar)" type="object" class="oe_highlight" states="in_progress"/>
                                   <button name="print_convocation" string="convocation" type="object" class="oe_highlight" states="in_progress"/>
                                   <button name="print_complement" string="complement" type="object" class="oe_highlight" states="in_progress"/>
@@ -80,6 +80,10 @@
                                   <button name="print_prestation" string="Ordre de prestation" type="object" class="oe_highlight" states="in_progress"/>
                                  -->
                                 </xpath>
+                                <xpath expr="//field[@name='project_scope']" position="after">
+                                  <field name="montant_ttc_marche" invisible="1"/>
+                                </xpath>
+
                         </field>
         </record>
 
@@ -116,6 +120,17 @@
                         <xpath expr="//button[@name='print_commencement_order']" position="after">
                                   <button name="print_b_cmd" string="Bon de commande" type="object" class="oe_highlight" states="engagement"/>        
                         </xpath>
+
+                        <xpath expr="//button[@name='print_engagement']" position="attributes">
+                             <attribute name="states">{}</attribute>
+                        </xpath>
+                        <xpath expr="//button[@name='print_engagement']" position="attributes">
+                             <attribute name="attrs">{'invisible': ['|', ('state', '!=', 'pre_engagement'), ('is_bc_execution', '=', False)]}</attribute>                                    
+                        </xpath>
+                        <xpath expr="//button[@name='print_engagement']" position="after">
+                                  <button name="print_engagement_ap_of" string="Imprimer engagement" type="object" class="btn-primary" attrs="{'invisible': ['|', '|', '|', ('state', '!=', 'pre_engagement'), ('is_bc_execution', '!=', False), ('is_execution_convention', '!=', False), ('is_regie_execution', '!=', False)]}"/>        
+                        </xpath>
+
                         </field>
         </record>
 

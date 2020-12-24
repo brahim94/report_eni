@@ -2,7 +2,7 @@
 
     <report
         id="action_report_appel_ar"
-        model="purchase.requisition"
+        model="newspaper.publication"
         string="Appel Offre"
         report_type="qweb-pdf"
 		name="tech_reports_extention.app_ar"

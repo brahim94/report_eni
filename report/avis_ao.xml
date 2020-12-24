@@ -2,7 +2,7 @@
 
     <report
         id="action_report_appel_offre"
-        model="purchase.requisition"
+        model="newspaper.publication"
         string="Avis Appel Offre"
         report_type="qweb-pdf"
 		name="tech_reports_extention.ao"
@@ -55,6 +55,15 @@
                 box-shadow: 1px 3px #888888;
                 text-align:center;
                 }
+                td.nobord {
+                border: none;
+                } 
+                th.nobord {
+                border: none;
+                }
+                table.nobord{
+                border: none;
+                }
                 td.empty {
             
             border: 1px solid black;
@@ -68,13 +77,13 @@
             </div>
 
             <div style="vertical-align:center;text-align: center" class="cls_009">
-                <strong><h4><u> Avis d’appel d’offres ouvert sur offres de prix N° <span t-field="o.tender_number"/> </u></h4></strong>
+                <strong><h4><u> Avis d’appel d’offres ouvert sur offres de prix N° <span t-field="o.requisition_id.tender_number"/> </u></h4></strong>
             </div>
                     
             <div style="vertical-align:center;text-align: left" class="a">
-                <p>Le <span t-field="o.submission_date" t-options='{"format": "dd/M/Y"}'/> à <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%HH:%MM')"/> , il sera procédé, dans la salle de réunions de l’Ecole Nationale Supérieure 
+                <p>Le <span t-field="o.requisition_id.submission_date" t-options='{"format": "dd/M/Y"}'/> à <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%HH:%MM')"/> , il sera procédé, dans la salle de réunions de l’Ecole Nationale Supérieure 
                 <br> des Mines de Rabat sise Avenue Hadj Ahmed Cherkaoui Agdal-Rabat à l’ouverture des plis relatifs </br>
-                <br>à l’Appel d’Offres ouvert sur offres de prix ayant pour objet : « <span t-field="o.project_scope"/> » ; <t t-if="o.lot_type == 'lot_unique'"> en Lot unique</t> <t t-if="o.lot_type == 'lot_multiple'">ou en <span t-field="o.lot_number"/> lots.</t></br> </p>
+                <br>à l’Appel d’Offres ouvert sur offres de prix ayant pour objet : « <span t-field="o.requisition_id.project_scope"/> » ; <t t-if="o.requisition_id.lot_type == 'lot_unique'"> en Lot unique</t> <t t-if="o.requisition_id.lot_type == 'lot_multiple'"> en <span t-field="o.requisition_id.lot_number"/> lots.</t></br> </p>
             </div>
                 
             <div style="vertical-align:center;text-align: left" >
@@ -97,7 +106,7 @@
                             </tr>
                     </thead>
                     <tbody>
-                        <t t-foreach="o.lot_details_ids" t-as="line">
+                        <t t-foreach="o.requisition_id.lot_details_ids" t-as="line">
                             <tr>
                                 <td  class = "empty" style="text-align: center"><span t-field="line.n_lot"/> </td>
                                 <td  class = "empty" style="text-align: center"><span t-field="line.object_name"/> </td>
@@ -125,10 +134,24 @@
 
             <div style="vertical-align:center;text-align: left" class="a">
                En vertu de l’article 34 du décret précité, et l’article N° fixer un numéro d’article) <br>du règlement de consultation, les :</br>            
-                <p>Prévoir un tableau suivant champs rempli
-                <br></br>
-                <br>    -prospectus, notices ou autres documents techniques exigés doivent être déposés au service du matériel et des marchés au plus tard le <br> (date dépôt prospectus)  (pendant les heures du travail).</br> </br>
-                <br>    -Echantillons doivent être déposés au service du matériel et des marchés au plus tard le (date dépôt échantillons)  (pendant les heures du travail)</br>.</p>
+                <p>
+                <table class="centre nobord">
+                    <thead>
+                            <tr>
+                                <th class="nobord" style="text-align: center" ></th>
+                            </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="o.requisition_id.piece_provide_ids" t-as="line">
+                            <tr>
+                                <td  class="nobord" style="text-align: left">- <span t-field="line.pieces"/></td>
+                            </tr>
+                        </t>
+                        
+                    </tbody>
+                </table>
+
+                <br>doivent être déposés au service du matériel et des marchés au plus tard le <t t-if="o.requisition_id.sample_deposit_date"><span t-field="o.requisition_id.sample_deposit_date"/></t><t t-if="not o.requisition_id.sample_deposit_date"><span t-field="o.requisition_id.prospectus_date"/></t>  (pendant les heures du travail)</br>.</p>
 
             </div>
         
