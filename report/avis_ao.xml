@@ -135,7 +135,7 @@
             <div style="vertical-align:center;text-align: left" class="a">
                En vertu de l’article 34 du décret précité, et l’article N° fixer un numéro d’article) <br>du règlement de consultation, les :</br>            
                 <p>
-                <table class="centre nobord">
+                <!-- <table class="centre nobord">
                     <thead>
                             <tr>
                                 <th class="nobord" style="text-align: center" ></th>
@@ -149,10 +149,16 @@
                         </t>
                         
                     </tbody>
-                </table>
-
-                <br>doivent être déposés au service du matériel et des marchés au plus tard le <t t-if="o.requisition_id.sample_deposit_date"><span t-field="o.requisition_id.sample_deposit_date"/></t><t t-if="not o.requisition_id.sample_deposit_date"><span t-field="o.requisition_id.prospectus_date"/></t>  (pendant les heures du travail)</br>.</p>
-
+                </table> -->
+                <t t-if="o.requisition_id.sample_deposit_date">
+                    <br>-	prospectus, notices ou autres documents techniques exigés doivent être déposés au service du matériel et des marchés au plus tard le <span t-field="o.requisition_id.prospectus_date"/>  (pendant les heures du travail).</br>
+                </t>
+                <t t-if="o.requisition_id.sample_deposit_date">
+                    <br>-	Echantillons doivent être déposés au service du matériel et des marchés au plus tard le <span t-field="o.requisition_id.sample_deposit_date"/>  (pendant les heures du travail)</br>
+                </t>
+                <!-- <br>doivent être déposés au service du matériel et des marchés au plus tard le <t t-if="o.requisition_id.sample_deposit_date"><span t-field="o.requisition_id.sample_deposit_date"/></t><t t-if="not o.requisition_id.sample_deposit_date"><span t-field="o.requisition_id.prospectus_date"/></t>  (pendant les heures du travail)</br>. -->
+            </p>
+            
             </div>
         
 

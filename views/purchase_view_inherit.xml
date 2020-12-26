@@ -84,8 +84,21 @@
                                   <field name="montant_ttc_marche" invisible="1"/>
                                 </xpath>
 
+                                <!-- <xpath expr="//form/notebook/page[@name='products']/field[@name='line_ids']" position="attributes"> -->
+                                
                         </field>
         </record>
+        <!-- <record id="view_appel_ofe_tech_inherit" model="ir.ui.view">
+                        <field name="name">tech.apl.offre.form.inherit</field>
+                        <field name="model">purchase.requisition</field>
+                        <field name="inherit_id" ref="wt_purchase_request_extend.view_purchase_requisition_inherited_form"/>
+                        <field name="arch" type="xml">
+                           <xpath expr="//notebook/page/field[@name='line_ids']/form/group/field[@name='schedule_date']" position="attributes">                                  
+                                  <attribute name="invisible">1</attribute>
+                                </xpath>
+
+                        </field>
+        </record> -->
 
         <record id="view_res_partner_tech_inherit" model="ir.ui.view">
                         <field name="name">tech.partner.form.inherit</field>
@@ -114,9 +127,9 @@
                         <field name="model">market.execution</field>
                         <field name="inherit_id" ref="wt_purchase_request_extend.view_market_execution_form"/>
                         <field name="arch" type="xml">
-                                <xpath expr="//field[@name='purchase_order_id_bc']" position="replace">
-                                    <field name="purchase_order_id_bc" domain="[('requisition_id', '=', purchase_requisition_bc), ('requisition_id', '!=', False), ('state', '=', 'done')]" attrs="{'invisible': [('is_bc_execution', '=', False), ('is_execution_convention', '=', False)]}"/>
-                                </xpath>
+                        <xpath expr="//field[@name='purchase_order_id_bc']" position="replace">
+                            <field name="purchase_order_id_bc" domain="[('requisition_id', '=', purchase_requisition_bc), ('requisition_id', '!=', False), ('state', '=', 'done')]" attrs="{'invisible': [('is_bc_execution', '=', False), ('is_execution_convention', '=', False)]}"/>
+                        </xpath>
                         <xpath expr="//button[@name='print_commencement_order']" position="after">
                                   <button name="print_b_cmd" string="Bon de commande" type="object" class="oe_highlight" states="engagement"/>        
                         </xpath>
@@ -125,12 +138,14 @@
                              <attribute name="states">{}</attribute>
                         </xpath>
                         <xpath expr="//button[@name='print_engagement']" position="attributes">
-                             <attribute name="attrs">{'invisible': ['|', ('state', '!=', 'pre_engagement'), ('is_bc_execution', '=', False)]}</attribute>                                    
+                             <attribute name="attrs">{'invisible': ['|', ('state', '!=', 'engagement'), ('is_bc_execution', '=', False)]}</attribute>                                    
                         </xpath>
                         <xpath expr="//button[@name='print_engagement']" position="after">
-                                  <button name="print_engagement_ap_of" string="Imprimer engagement" type="object" class="btn-primary" attrs="{'invisible': ['|', '|', '|', ('state', '!=', 'pre_engagement'), ('is_bc_execution', '!=', False), ('is_execution_convention', '!=', False), ('is_regie_execution', '!=', False)]}"/>        
+                                  <button name="print_engagement_ap_of" string="Imprimer engagement" type="object" class="btn-primary" attrs="{'invisible': ['|', '|', '|', ('state', '!=', 'engagement'), ('is_bc_execution', '!=', False), ('is_execution_convention', '!=', False), ('is_regie_execution', '!=', False)]}"/>        
                         </xpath>
-
+                        <xpath expr="//field[@name='final_deposit']" position="attributes">
+                             <attribute name="attrs">{'invisible': [('is_bc_execution', '=', False)]}</attribute>                                                                
+                        </xpath>
                         </field>
         </record>
 

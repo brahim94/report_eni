@@ -66,7 +66,7 @@
                         <tr>
                             <tr>
                                 <th  style="text-align: center;width:30%">N° de marché</th>
-                                <td  class="bord" style="text-align:center" ><span t-field="o.purchase_requisition.tender_number"/> </td>
+                                <td  class="bord" style="text-align:center" ><span t-field="o.name"/> </td>
 
                             </tr>
                             <tr>
@@ -82,7 +82,8 @@
                             </tr>
                             <tr>
                                 <th  style="text-align: center;width:30%">Montant TTC du marché</th>
-                                <td  class="bord" style="text-align:center"><span t-field="o.purchase_requisition.montant_ttc_marche"/></td>
+                                <!-- <td  class="bord" style="text-align:center"><span t-field="o.purchase_requisition.montant_ttc_marche"/></td> -->
+                                <td  class="bord" style="text-align:center"><span t-field="o.engagement_amount"/></td>
                             </tr>
                                                        
                         </tr>

@@ -134,7 +134,7 @@ class purchase_riquisition(models.Model):
                                                 'purchase_request_line_ids': [(6, 0, product_line.purchase_request_line_ids.ids)]}))
             purchase_id = purchase_order.create({'partner_id': each.bidder_id.id,
                                                   'partner_ref': (self.tender_number or '') + '-' + str(each.lot_id.n_lot) + ('-' + each.lot_id.object_name if each.lot_id.object_name else ''),
-                                                  'lot_number': str(each.lot_id.n_lot) + ('-' + each.lot_id.object_name if each.lot_id.object_name else ''),
+                                                  'lot_number': (self.name) + '-' + str(each.lot_id.n_lot) + ('-' + each.lot_id.object_name if each.lot_id.object_name else ''),
                                                   'requisition_id': self.id,
                                                   'tender_decision_line_id': each.id,
                                                   'order_line': product_lst})
@@ -165,6 +165,11 @@ class market_execution(models.Model):
         vals['engagement_number'] = self.env['ir.sequence'].next_by_code('market.engag') or '/'
         return super(market_execution, self).create(vals)
 
+    def print_notification(self):
+        if self.notification_number == _('New') or self.notification_number == 'New':
+            self.write({'notification_number': self.env['ir.sequence'].next_by_code('market.notif')})
+        return self.env.ref('tech_reports_extention.action_report_approbation').report_action(self)
+
     def print_commencement_order(self):
         return self.env.ref('tech_reports_extention.action_report_execution').report_action(self)
     
@@ -194,9 +199,9 @@ class NewsPaper(models.Model):
             for line in pack.requisition_id.newspaper_publication_ids:
                 if line.notice_type == 'français':
                     return self.env.ref('tech_reports_extention.action_report_appel_offre').report_action(self)
-                if line.notice_type == 'Arabe':
+                elif line.notice_type == 'Arabe':
                     return self.env.ref('tech_reports_extention.action_report_appel_offre_ar').report_action(self)
-            
+                
     @api.depends('requisition_id.montant_ttc_marche')
     def get_amount_in_words(self):
         amount_in_words = self.requisition_id.currency_id.montant_ttc_marche(self.requisition_id.montant_ttc_marche)
