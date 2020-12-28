@@ -145,6 +145,8 @@ class purchase_riquisition(models.Model):
         action['context'] = {'default_requisition_id': self.id, 'default_user_id': False, 'default_partner_ref': self.tender_number, 'search_default_group_partner_ref': 1}
         return action
 
+    date_sub = fields.Float('Heure de submission')
+
 class market_execution(models.Model):
     _inherit = 'market.execution'
 

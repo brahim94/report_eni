@@ -83,6 +83,18 @@
                                 <xpath expr="//field[@name='project_scope']" position="after">
                                   <field name="montant_ttc_marche" invisible="1"/>
                                 </xpath>
+                                <xpath expr="//label[@for='submission_days']" position="replace">
+                                  <label for="submission_days" string="Submission"/>
+                                      <group col="4">
+                                          <field name="submission_days"/>
+                                           <label for="submission_date"/>
+                                            <div class="o_row" style="max-width: 600px; max-height: 400px">
+                                                <field name="submission_date"/>
+                                                <field name="date_sub" widget="float_time" style="max-width: 2000px; max-height: 1000px"/>
+                                            </div>
+                                          
+                                      </group>
+                                </xpath>
 
                                 <!-- <xpath expr="//form/notebook/page[@name='products']/field[@name='line_ids']" position="attributes"> -->
                                 

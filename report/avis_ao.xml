@@ -81,7 +81,7 @@
             </div>
                     
             <div style="vertical-align:center;text-align: left" class="a">
-                <p>Le <span t-field="o.requisition_id.submission_date" t-options='{"format": "dd/M/Y"}'/> à <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%HH:%MM')"/> , il sera procédé, dans la salle de réunions de l’Ecole Nationale Supérieure 
+                <p>Le <span t-field="o.requisition_id.submission_date" t-options='{"format": "dd/M/Y"}'/> à <span t-field="o.requisition_id.date_sub" t-options='{"widget": "float_time"}'/> :h, il sera procédé, dans la salle de réunions de l’Ecole Nationale Supérieure 
                 <br> des Mines de Rabat sise Avenue Hadj Ahmed Cherkaoui Agdal-Rabat à l’ouverture des plis relatifs </br>
                 <br>à l’Appel d’Offres ouvert sur offres de prix ayant pour objet : « <span t-field="o.requisition_id.project_scope"/> » ; <t t-if="o.requisition_id.lot_type == 'lot_unique'"> en Lot unique</t> <t t-if="o.requisition_id.lot_type == 'lot_multiple'"> en <span t-field="o.requisition_id.lot_number"/> lots.</t></br> </p>
             </div>
