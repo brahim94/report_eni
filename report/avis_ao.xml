@@ -72,9 +72,9 @@
 
             </style>
 
-            <div style="vertical-align:center;text-align: center" class="cls_039">
+            <!-- <div style="vertical-align:center;text-align: center" class="cls_039">
                 <h4><strong><u>Annexe 2 : Modèle des avis d’appels d’offres</u></strong></h4>
-            </div>
+            </div> -->
 
             <div style="vertical-align:center;text-align: center" class="cls_009">
                 <strong><h4><u> Avis d’appel d’offres ouvert sur offres de prix N° <span t-field="o.requisition_id.tender_number"/> </u></h4></strong>
