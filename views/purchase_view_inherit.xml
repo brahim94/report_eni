@@ -100,18 +100,7 @@
                                 
                         </field>
         </record>
-        <!-- <record id="view_appel_ofe_tech_inherit" model="ir.ui.view">
-                        <field name="name">tech.apl.offre.form.inherit</field>
-                        <field name="model">purchase.requisition</field>
-                        <field name="inherit_id" ref="wt_purchase_request_extend.view_purchase_requisition_inherited_form"/>
-                        <field name="arch" type="xml">
-                           <xpath expr="//notebook/page/field[@name='line_ids']/form/group/field[@name='schedule_date']" position="attributes">                                  
-                                  <attribute name="invisible">1</attribute>
-                                </xpath>
-
-                        </field>
-        </record> -->
-
+        
         <record id="view_res_partner_tech_inherit" model="ir.ui.view">
                         <field name="name">tech.partner.form.inherit</field>
                         <field name="model">res.partner</field>
@@ -161,6 +150,27 @@
                         </field>
         </record>
 
+        <record id="view_decision_bidder_tech_inherit" model="ir.ui.view">
+                        <field name="name">decision.bidder.form.inherit</field>
+                        <field name="model">purchase.requisition</field>
+                        <field name="inherit_id" ref="purchase_requisition.view_purchase_requisition_form"/>
+                        <field name="arch" type="xml">
+                                <xpath expr="//field[@name='decision_compliments_ids']/tree/field[@name='name']" position="after">
+                                    <field name="date_invitation"/>
+                                </xpath>
+                                <xpath expr="//field[@name='decision_compliments_ids']/tree/field[@name='decision_complement_ids']" position="after">
+                                    <button name="send_invitation" type="object" string="Lettre d'invitation" class="oe_highlight" />
+                                </xpath>
+                                <xpath expr="//field[@name='decision_compliments_ids']/form/group/group/field[@name='name']" position="after">
+                                    <field name="date_invitation"/>
+                                </xpath>
+                                <xpath expr="//field[@name='decision_compliments_ids']/form/group[2]/field[@name='decision_complement_ids']/tree/field[@name='is_fournie']" position="before">
+                                    <field name="complements_id"/>
+                                </xpath>
+
+                        </field>
+        </record>
+
             <template id="internal_layout_header_inherit" inherit_id="web.internal_layout">
                 <xpath expr="//div[@class='header']" position="replace">
                     <div class="header">
@@ -188,6 +198,8 @@
                     </td>
                     
                     </tr>
+
+
 
                         <!-- <div class="row">
                             <div class="col-4" style="text-align: center">

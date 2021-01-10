@@ -209,4 +209,10 @@ class NewsPaper(models.Model):
         amount_in_words = self.requisition_id.currency_id.montant_ttc_marche(self.requisition_id.montant_ttc_marche)
         return amount_in_words
 
-    
+class TenderDecisionCompliments(models.Model):
+    _inherit = 'tender.decision.compliments'
+
+    date_invitation = fields.Date("Date d'invitation")    
+
+#     def print_b_cmd(self):
+#         return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
