@@ -28,8 +28,12 @@
                                 </xpath>                                
                                
                                 <xpath expr="//field[@name='state_bc_order']" position="replace">
-                                    <field name="state_bc_order" widget="statusbar" statusbar_visible="draft,sent,purchase,done" readonly="1" attrs="{'invisible': [('is_bc_purchase_requisition', '=', False)]}"/>
+                                    <!-- <field name="state_bc_order" widget="statusbar" statusbar_visible="draft,sent,purchase,done" readonly="1" attrs="{'invisible': [('is_bc_purchase_requisition', '=', False)]}"/> -->
+                                    <field name="state_bc_order" widget="statusbar" statusbar_visible="draft,sent,purchase,done" readonly="1"/>
                                 </xpath>
+                                <field name="state" position="attributes">
+                                        <attribute name="attrs">{'invisible': 1}</attribute>
+                                </field>
                                 <xpath expr="//button[@name='print_execution']" position="replace">
                                     <button name="action_back_reponse" string="Annuler l'attribution" type="object" states="done"/>
                                 </xpath>                                
