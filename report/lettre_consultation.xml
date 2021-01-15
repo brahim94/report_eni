@@ -135,6 +135,7 @@
                                 <tr>
                                     <th class="mark" rowspan="2" style="text-align: center">Article N°</th>
                                     <th class="mark" rowspan="2" style="text-align: center;width:40%">Désignation des prestations</th>
+                                    <th class="mark" rowspan="2" style="text-align: center" >Description</th>
                                     <th class="mark" rowspan="2" style="text-align: center" >Unité</th>
                                     <th class="mark" rowspan="2" style="text-align: center" >Quantité</th>
                                     <th class="mark" rowspan="2" style="text-align: center">Prix Unitaire (HT)</th>
@@ -145,6 +146,7 @@
                                 <t t-foreach="o.order_line" t-as="line">
                                 <tr >
                                     <td style="text-align: center" class="bord"><span t-field="line.sequence"/></td>
+                                    <td style="text-align: center" class="bord"><span t-field="line.product_id"/></td>                                    
                                     <td style="text-align: center" class="bord"><span t-field="line.name"/></td>                                    
                                     <td style="text-align: center" class="bord"><span t-field="line.product_uom"/></td>
                                     <td style="text-align: center" class="bord"><span t-field="line.product_qty"/></td>
@@ -155,15 +157,15 @@
                                 
                                  </t>
                                  <tr>
-                                    <th colspan="5" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TOTAL (HT) :</th>
+                                    <th colspan="6" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TOTAL (HT) :</th>
                                     <td class="bord mark empty" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"></td>
                                 </tr>
                                 <tr>
-                                    <th colspan="5" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TAUX TVA :</th>
+                                    <th colspan="6" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TAUX TVA :</th>
                                     <td class="bord mark empty" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"></td>
                                 </tr>
                                 <tr>
-                                    <th colspan="5" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TOTAL (TTC) :</th>
+                                    <th colspan="6" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TOTAL (TTC) :</th>
                                     <td class="bord mark empty" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"></td>
                                 </tr>
                             </tbody>

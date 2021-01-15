@@ -18,6 +18,7 @@ class tech_reports_extention(models.Model):
 
     state_bc_order = fields.Selection(PURCHASE_ORDER_BC_STATE, compute='_set_bc_order_state')
     lot_number = fields.Char('N° de lot')
+    order_date = fields.Date('Order Date')
     
     def action_fournisseur_choisi(self):
         return self.write({'state': "done"})
@@ -216,3 +217,30 @@ class TenderDecisionCompliments(models.Model):
 
 #     def print_b_cmd(self):
 #         return self.env.ref('tech_reports_extention.action_report_b_cmd').report_action(self)
+class TechBudget(models.Model):
+    _inherit = 'tech.budget'
+
+    tech_budget_line = fields.One2many(copy=True)
+
+class tech_reports_request(models.Model):
+    _inherit = 'purchase.request'
+
+    PURCHASE_REQ_BC_STATE = [
+        ("draft", "Brouillon"),
+        ("to_be_approve", "Apprové"),
+        ("to_approve", "Validé"),
+        ("approved", "Qualifié"),
+        ("done", "Clauturé"),
+        ("rejected", "Refusé"),
+        ("cancelled", "Annulé")
+    ]
+
+    state_req = fields.Selection(PURCHASE_REQ_BC_STATE, compute='_set_req_order_state')
+    is_req = fields.Boolean(string='Is req')
+
+    @api.depends('state')
+    def _set_req_order_state(self):
+        for purchase in self:
+            purchase.state_req = purchase.state
+
+    
