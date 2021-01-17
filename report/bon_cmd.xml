@@ -138,8 +138,9 @@
                      <table class="centre marg" style="width:99%">
                             <thead>
                                 <tr>
-                                    <th  rowspan="2" style="text-align: center;width:20%">Prix n°</th>
-                                    <th  rowspan="2" style="text-align: center;width:40%">Désignation</th>
+                                    <th  rowspan="2" style="text-align: center">Prix n°</th>
+                                    <th  rowspan="2" style="text-align: center">Désignation</th>
+                                    <th  rowspan="2" style="text-align: center;width:40%" >Description</th>
                                     <th  rowspan="2" style="text-align: center" >Qté</th>
                                     <th  rowspan="2" style="text-align: center" >PU</th>
                                     <th  rowspan="2" style="text-align: center">Total HT</th>
@@ -149,7 +150,8 @@
                                 <t t-foreach="o.purchase_order_id_bc.order_line" t-as="line">
                                 <tr >
                                     
-                                    <td class="bord" style="text-align: center"><span t-field="line.product_id"/></td>                                    
+                                    <td class="bord" style="text-align: center"><span t-field="line.sequence"/></td>                                    
+                                    <td style="text-align: center" class="bord"><span t-field="line.product_id"/></td>                                                                        
                                     <td class="bord" style="text-align: center"><span t-field="line.name"/></td>
                                     <td class="bord" style="text-align: center"><span t-field="line.product_qty"/></td>
                                     <td class="bord" style="text-align: center"><span t-field="line.price_unit"/></td>
@@ -159,15 +161,15 @@
                                 
                                  </t>
                                  <tr>
-                                    <th colspan="4" style="text-align: right;padding:2px; margin:2px">TOTAL (HT) :</th>
+                                    <th colspan="5" style="text-align: right;padding:2px; margin:2px">TOTAL (HT) :</th>
                                     <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.purchase_order_id_bc.amount_untaxed"/></td>
                                 </tr>
                                 <tr>
-                                    <th colspan="4" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TAUX TVA :</th>
+                                    <th colspan="5" style="text-align: right;border-bottom: none;padding:2px; margin:2px">TAUX TVA :</th>
                                     <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.purchase_order_id_bc.amount_tax"/></td>
                                 </tr>
                                 <tr>
-                                    <th colspan="4" style="text-align: right;padding:2px; margin:2px">TOTAL (TTC) :</th>
+                                    <th colspan="5" style="text-align: right;padding:2px; margin:2px">TOTAL (TTC) :</th>
                                     <td class="bord" style="border: 1px solid black;text-align: center;padding:0px; margin:0px"><span t-field="o.purchase_order_id_bc.amount_total"/></td>
                                 </tr>
                             </tbody>
@@ -179,7 +181,7 @@
                             <strong><span t-esc="o.get_amount_in_words()"/></strong>
                     </div>
                     <div class="m">
-                            <strong>Destination: <span t-field="o.purchase_order_id_bc.partner_id"/></strong>
+                            <strong>Destination: ENSMR</strong>
                     </div>
                                
                     <div class="m" style="position:absolute;top:820px;text-align:center">

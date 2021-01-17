@@ -17,7 +17,7 @@
                                   <attribute name="invisible">1</attribute>
                                 </xpath>
                                 <xpath expr="//button[@name='action_rfq_send']" position="after">
-                                  <button name="print_purchase" string="Lettre de consultation" type="object" class="oe_highlight" states="draft"/>
+                                  <button name="print_purchase" string="Lettre de consultation" type="object" class="oe_highlight"  attrs="{'invisible': ['|',('is_bc_purchase_requisition', '=', False),('state_bc_order', 'not in', 'draft')]}"/>
                                 </xpath>
                                 <xpath expr="//button[@name='print_quotation']" position="after">
                                   <button name="action_fournisseur_choisi" string="Fournisseur choisi" type="object" class="oe_highlight" states="purchase"/>
@@ -29,7 +29,7 @@
                                
                                 <xpath expr="//field[@name='state_bc_order']" position="replace">
                                     <!-- <field name="state_bc_order" widget="statusbar" statusbar_visible="draft,sent,purchase,done" readonly="1" attrs="{'invisible': [('is_bc_purchase_requisition', '=', False)]}"/> -->
-                                    <field name="state_bc_order" widget="statusbar" statusbar_visible="draft,sent,purchase,done" readonly="1"/>
+                                    <field name="state_bc_order" widget="statusbar" statusbar_visible="draft,sent,purchase,done" readonly="1" attrs="{'invisible': [('is_bc_purchase_requisition', '=', False)]}"/>
                                 </xpath>
                                 <field name="state" position="attributes">
                                         <attribute name="attrs">{'invisible': 1}</attribute>
@@ -42,14 +42,21 @@
                                     <button name="button_confirm" type="object" states="sent" string="Réponse consultation" class="oe_highlight" id="bid_confirm"/>                                    
                                 </xpath>
                                 <xpath expr="//button[@id='draft_confirm']" position="replace">
-                                   <button name="button_confirm" type="object" states="draft" string="Réponse consultation" id="draft_confirm"/> 
+                                   <button name="button_confirm" type="object" string="Réponse consultation" id="draft_confirm" attrs="{'invisible': ['|',('is_bc_purchase_requisition', '=', False),('state_bc_order', 'not in', 'draft')]}"/> 
                                 </xpath>
+                                <xpath expr="//button[@name='button_cancel']" position="attributes">
+                                    <attribute name="attrs">{'invisible': ['|',('is_bc_purchase_requisition', '=', False),('state_bc_order', 'not in', 'draft')]}</attribute>
+                                </xpath>                                
+                               <xpath expr="//button[@name='action_rfq_send']" position="attributes">
+                                    <attribute name="attrs">{'invisible': ['|',('is_bc_purchase_requisition', '=', False),('state_bc_order', 'not in', 'draft')]}</attribute>
+                                </xpath>                                
+                               
                                 <!-- <xpath expr="//field[@name='date_order']" position="replace">
                                     <field name="date_order" nolabel="1"/>
                                 </xpath> -->
                                 <xpath expr="//field[@name='date_approve']" position="attributes">
                                     <attribute name="string">Date réponse</attribute>
-                                    <attribute name="attrs">{'invisible': [('state_bc_order', '=', 'done')]}</attribute>
+                                    <attribute name="attrs">{'invisible': [('state_bc_order', 'not in', ['draft','sent','purchase','done'])]}</attribute>
                                 </xpath>
                             
                                 <!-- <xpath expr="//field[@name='date_order']" position="replace">
@@ -60,13 +67,13 @@
                                 <field name="date_order" nolabel="1" attrs="{'invisible': [('state','=','purchase')]}"/>
                                 </xpath> -->
                                 <xpath expr="//field[@name='partner_ref']" position="after">
-                                    <field name="lot_number"/>
+                                    <field name="lot_number" attrs="{'invisible': [('is_bc_purchase_requisition', '!=', False)]}"/>
                                 </xpath>
                                 
                         </field>
         </record>
 
-        <record id="view_date_order_inherit" model="ir.ui.view">
+        <!-- <record id="view_date_order_inherit" model="ir.ui.view">
                         <field name="name">tech.date.order.form.inherit</field>
                         <field name="model">purchase.order</field>
                         <field name="inherit_id" ref="wt_purchase_request_extend.view_purchase_order_form_inherit"/>
@@ -77,14 +84,14 @@
                             
                             <xpath expr="//field[@name='date_order']" position="attributes">
                                     <attribute name="invisible">1</attribute>
-                            </xpath>
+                            </xpath> -->
                              <!-- <xpath expr="//label[@for='date_order']" position="replace">
                                     <label for="date_order" string="Date limite" attrs="{'invisible': [('is_bc_purchase_requisition', '=', False)]}"/>
                             </xpath> -->
-                        </field>
-        </record>
+                        <!-- </field>
+        </record> -->
 
-        <record id="view_date_order_purchase_inherit" model="ir.ui.view">
+        <!-- <record id="view_date_order_purchase_inherit" model="ir.ui.view">
                         <field name="name">tech.date.order.purchase.form.inherit</field>
                         <field name="model">purchase.order</field>
                         <field name="inherit_id" ref="purchase.purchase_order_form"/>
@@ -99,7 +106,7 @@
 
                             </xpath>
                         </field>
-        </record>
+        </record> -->
         
         <record id="view_appel_offre_tech_inherit" model="ir.ui.view">
                         <field name="name">tech.appel.offre.form.inherit</field>
@@ -153,7 +160,38 @@
                                 <xpath expr="//field[@name='phone']" position="after">
                                   <field name="fax"/>
                                 </xpath>
+                                <xpath expr="//field[@name='vat']" position="after">
+                                  <field name="industry_id"/>
+                                </xpath>
                         </field>
+        </record>
+        
+        <record id="customer_sector_tree_ex_PLUS" model="ir.ui.view">
+            <field name="name">customer.sector.tree.ex.plus</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="industry_id"/>
+                </xpath>
+            </field>
+        </record>
+        
+        
+        <record model="ir.ui.view" id="view_sector_customer_filter_search">
+            <field name="name">customer.sector.search</field>
+            <field name="model">res.partner</field>
+            <field name="arch" type="xml">
+                <search string="Fournisseur">
+                    <field name="name" filter_domain="[('name', 'ilike', self)]" />
+                    <field name="company_id" string="Société"
+                                filter_domain="[('company_id','ilike',self)]"/>
+                    <field name="email" string="Email"
+                                filter_domain="[('email','ilike',self)]"/>
+                    <field name="industry_id" string="Secteur"
+                                filter_domain="[('industry_id','ilike',self)]"/>
+               </search> 
+                </field>
         </record>
 
         <record id="view_res_company_tech_inherit" model="ir.ui.view">
@@ -176,7 +214,7 @@
                             <field name="purchase_order_id_bc" domain="[('requisition_id', '=', purchase_requisition_bc), ('requisition_id', '!=', False), ('state', '=', 'done')]" attrs="{'invisible': [('is_bc_execution', '=', False), ('is_execution_convention', '=', False)]}"/>
                         </xpath>
                         <xpath expr="//button[@name='print_commencement_order']" position="after">
-                                  <button name="print_b_cmd" string="Bon de commande" type="object" class="oe_highlight" states="engagement"/>        
+                                  <button name="print_b_cmd" string="Bon de commande" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('state', '!=', 'engagement'), ('is_bc_execution', '=', False)]}"/>        
                         </xpath>
 
                         <xpath expr="//button[@name='print_engagement']" position="attributes">
@@ -189,7 +227,7 @@
                                   <button name="print_engagement_ap_of" string="Imprimer engagement" type="object" class="btn-primary" attrs="{'invisible': ['|', '|', '|', ('state', '!=', 'engagement'), ('is_bc_execution', '!=', False), ('is_execution_convention', '!=', False), ('is_regie_execution', '!=', False)]}"/>        
                         </xpath>
                         <xpath expr="//field[@name='final_deposit']" position="attributes">
-                             <attribute name="attrs">{'invisible': [('is_bc_execution', '=', False)]}</attribute>                                                                
+                             <attribute name="attrs">{'invisible': ['|','|',('is_bc_execution', '!=', False), ('is_execution_convention', '!=', False), ('is_regie_execution', '!=', False)]}</attribute>                                                                
                         </xpath>
                         </field>
         </record>
@@ -212,6 +250,18 @@
                         </field>
         </record>
 
+        <record id="execution_marche_tree_ex_PLUS" model="ir.ui.view">
+            <field name="name">execution.marche.tree.ex.plus</field>
+            <field name="model">market.execution</field>
+            <field name="inherit_id" ref="wt_purchase_request_extend.view_market_execution_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="string">N° Marché</attribute>
+                </xpath>
+            </field>
+        </record>
+        
+        
         <record id="view_decision_bidder_tech_inherit" model="ir.ui.view">
                         <field name="name">decision.bidder.form.inherit</field>
                         <field name="model">purchase.requisition</field>

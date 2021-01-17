@@ -134,8 +134,8 @@
                             <thead>
                                 <tr>
                                     <th class="mark" rowspan="2" style="text-align: center">Article N°</th>
-                                    <th class="mark" rowspan="2" style="text-align: center;width:40%">Désignation des prestations</th>
-                                    <th class="mark" rowspan="2" style="text-align: center" >Description</th>
+                                    <th class="mark" rowspan="2" style="text-align: center">Désignation des prestations</th>
+                                    <th class="mark" rowspan="2" style="text-align: center;width:40%" >Description</th>
                                     <th class="mark" rowspan="2" style="text-align: center" >Unité</th>
                                     <th class="mark" rowspan="2" style="text-align: center" >Quantité</th>
                                     <th class="mark" rowspan="2" style="text-align: center">Prix Unitaire (HT)</th>

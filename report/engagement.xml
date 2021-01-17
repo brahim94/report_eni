@@ -72,10 +72,13 @@
                             <tr>
                                 <th  style="text-align: center;width:30%">Objet du marché</th>
                                 <td  class="bord" style="text-align:center" ><span t-field="o.purchase_requisition.project_scope"/></td>
-                            </tr><tr>
-                                <th  style="text-align: center;width:30%">N° de lot</th>
-                                <td class="bord" style="text-align:center"><span t-field="o.purchase_order.lot_number"/></td>
                             </tr>
+                            <t t-if="o.purchase_requisition.lot_type  == 'lot_multiple' ">
+                                <tr>
+                                    <th  style="text-align: center;width:30%">N° de lot</th>
+                                    <td class="bord" style="text-align:center"><span t-field="o.purchase_order.lot_number"/></td>
+                                </tr>
+                            </t>
                             <tr>
                                 <th  style="text-align: center;width:30%">Titulaire du marché</th>
                                 <td  class="bord" style="text-align:center" ><span t-field="o.partner_id"/></td>

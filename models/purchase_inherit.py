@@ -174,6 +174,8 @@ class market_execution(models.Model):
         return self.env.ref('tech_reports_extention.action_report_approbation').report_action(self)
 
     def print_commencement_order(self):
+        if self.order_service_number == _('New') or self.order_service_number == 'New':
+            self.write({'order_service_number': self.env['ir.sequence'].next_by_code('market.order.service')})
         return self.env.ref('tech_reports_extention.action_report_execution').report_action(self)
     
     def print_b_cmd(self):
