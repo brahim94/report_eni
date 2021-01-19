@@ -152,7 +152,7 @@
                                     
                                     <td class="bord" style="text-align: center"><span t-field="line.sequence"/></td>                                    
                                     <td style="text-align: center" class="bord"><span t-field="line.product_id"/></td>                                                                        
-                                    <td class="bord" style="text-align: center"><span t-field="line.name"/></td>
+                                    <td class="bord" style="text-align: center"><span t-field="line.product_id.description"/></td>
                                     <td class="bord" style="text-align: center"><span t-field="line.product_qty"/></td>
                                     <td class="bord" style="text-align: center"><span t-field="line.price_unit"/></td>
                                     <td class="bord" style="text-align: center"><span t-field="line.price_subtotal"/></td>
