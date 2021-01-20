@@ -222,7 +222,35 @@ class TenderDecisionCompliments(models.Model):
 class TechBudget(models.Model):
     _inherit = 'tech.budget'
 
+    @api.model
+    def create(self, vals):
+        if vals.get('sequence', ('New')) == ('New'):
+            vals['sequence'] = self.env["ir.sequence"].next_by_code("tech.budget") or ('New')
+        if vals.get('sequence_f', ('New')) == ('New'):
+            vals['sequence_f'] = self.env["ir.sequence"].next_by_code("tech.budget.function") or ('New')
+        if vals.get('sequence_i', ('New')) == ('New'):
+            vals['sequence_i'] = self.env["ir.sequence"].next_by_code("tech.budget.investis") or ('New')
+        return super(TechBudget, self).create(vals)
+
+
+    sequence_f = fields.Char(string='Sequence func', readonly="1")
+    sequence_i = fields.Char(string='Sequence inv', readonly="1")    
     tech_budget_line = fields.One2many(copy=True)
+
+
+    @api.depends("sequence", "sequence_f", "sequence_i", "type_budget", "date_debut")
+    def _compute_is_name(self):
+        for rec in self:
+            type_budget = ''
+            if rec.type_budget == 'chb':
+                type_budget = 'C'
+                rec.name = str(type_budget) + '-'  + str(rec.sequence) + '-' + str(rec.date_debut)            
+            elif rec.type_budget == 'functionment':
+                type_budget = 'F'
+                rec.name = str(type_budget) + '-'  + str(rec.sequence_f) + '-' + str(rec.date_debut)            
+            elif rec.type_budget == 'investment':
+                type_budget = 'I'
+                rec.name = str(type_budget) + '-' + str(rec.sequence_i) + '-' + str(rec.date_debut)           
 
 class tech_reports_request(models.Model):
     _inherit = 'purchase.request'

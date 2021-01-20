@@ -262,6 +262,19 @@
         </record>
         
         
+        <record id="tech_budget_inherit_form" model="ir.ui.view">
+            <field name="name">tech.budget.inherit.form</field>
+            <field name="model">tech.budget</field>
+            <field name="inherit_id" ref="tech_budget.view_tech_budget_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='sequence']" position="after">
+                    <field name="sequence_f" invisible='1'/>
+                    <field name="sequence_i" invisible='1'/>
+                </xpath>
+            </field>
+        </record>
+        
+        
         <record id="view_decision_bidder_tech_inherit" model="ir.ui.view">
                         <field name="name">decision.bidder.form.inherit</field>
                         <field name="model">purchase.requisition</field>

@@ -24,6 +24,24 @@
             <field name="company_id" eval="False"></field>
         </record>
 
+        <record id="seq_tech_budget_function" model="ir.sequence">
+            <field name="name">Budget Sequence Function</field>
+            <field name="code">tech.budget.function</field>
+            <field name="prefix"></field>
+            <field name="padding">5</field>
+            <!-- <field name="suffix">-%(y)s</field> -->
+
+        </record>
+
+        <record id="seq_tech_budget_investis" model="ir.sequence">
+            <field name="name">Budget Sequence Investis</field>
+            <field name="code">tech.budget.investis</field>
+            <field name="prefix"></field>
+            <field name="padding">5</field>
+            <!-- <field name="suffix">-%(month)s-%(y)s</field> -->
+
+        </record>
+
  </data>
 
  

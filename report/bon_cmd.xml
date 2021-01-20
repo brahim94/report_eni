@@ -141,6 +141,7 @@
                                     <th  rowspan="2" style="text-align: center">Prix n°</th>
                                     <th  rowspan="2" style="text-align: center">Désignation</th>
                                     <th  rowspan="2" style="text-align: center;width:40%" >Description</th>
+                                    <th class="mark" rowspan="2" style="text-align: center" >Unité</th>                                    
                                     <th  rowspan="2" style="text-align: center" >Qté</th>
                                     <th  rowspan="2" style="text-align: center" >PU</th>
                                     <th  rowspan="2" style="text-align: center">Total HT</th>
@@ -153,6 +154,7 @@
                                     <td class="bord" style="text-align: center"><span t-field="line.sequence"/></td>                                    
                                     <td style="text-align: center" class="bord"><span t-field="line.product_id"/></td>                                                                        
                                     <td class="bord" style="text-align: center"><span t-field="line.product_id.description"/></td>
+                                    <td style="text-align: center" class="bord"><span t-field="line.product_uom"/></td>                                    
                                     <td class="bord" style="text-align: center"><span t-field="line.product_qty"/></td>
                                     <td class="bord" style="text-align: center"><span t-field="line.price_unit"/></td>
                                     <td class="bord" style="text-align: center"><span t-field="line.price_subtotal"/></td>
@@ -177,7 +179,7 @@
                 </table> 
 
                          <div class=" m">
-                            Arrêté le présent devis à la somme de   (en lettres):
+                            Arrêté le présent bon de commande à la somme de   (en lettres):
                             <strong><span t-esc="o.get_amount_in_words()"/></strong>
                     </div>
                     <div class="m">
