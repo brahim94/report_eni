@@ -260,7 +260,19 @@
                 </xpath>
             </field>
         </record>
-        
+<!--         
+        <record id="tech_budget_inherit_header" model="ir.ui.view">
+            <field name="name">tech.budget.inherit.header</field>
+            <field name="model">tech.budget</field>
+            <field name="inherit_id" ref="tech_budget.view_tech_budget_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/header" position="inside">
+                    <button name="generate_sequence_one" string="Generate Sequence" type="object" attrs="{'invisible': [('type_budget', '!=', 'chb')]}"/>
+                    <button name="generate_sequence_two" string="Generate Sequence" type="object" attrs="{'invisible': [('type_budget', '!=', 'functionment')]}"/>
+                    <button name="generate_sequence_three" string="Generate Sequence" type="object" attrs="{'invisible': [('type_budget', '!=', 'investment')]}"/>
+                </xpath>
+            </field>
+        </record> -->
         
         <record id="tech_budget_inherit_form" model="ir.ui.view">
             <field name="name">tech.budget.inherit.form</field>
@@ -268,8 +280,8 @@
             <field name="inherit_id" ref="tech_budget.view_tech_budget_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//field[@name='sequence']" position="after">
-                    <field name="sequence_f" invisible='1'/>
-                    <field name="sequence_i" invisible='1'/>
+                    <field name="sequence_f" invisible='0'/>
+                    <field name="sequence_i" invisible='0'/>
                 </xpath>
             </field>
         </record>

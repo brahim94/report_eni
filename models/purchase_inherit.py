@@ -231,11 +231,26 @@ class TechBudget(models.Model):
         if vals.get('sequence_i', ('New')) == ('New'):
             vals['sequence_i'] = self.env["ir.sequence"].next_by_code("tech.budget.investis") or ('New')
         return super(TechBudget, self).create(vals)
-
-
+    
+    
     sequence_f = fields.Char(string='Sequence func', readonly="1")
     sequence_i = fields.Char(string='Sequence inv', readonly="1")    
     tech_budget_line = fields.One2many(copy=True)
+
+    # def generate_sequence_one(self):
+    #     if self.sequence == _('New') or self.sequence == 'New':
+    #         self.write({'sequence': self.env['ir.sequence'].next_by_code('tech.budget')})
+    #     return True
+
+    # def generate_sequence_two(self):
+    #     if self.sequence_f == _('New') or self.sequence_f == 'New':
+    #         self.write({'sequence_f': self.env['ir.sequence'].next_by_code('tech.budget.function')})
+    #     return True
+
+    # def generate_sequence_three(self):
+    #     if self.sequence_i == _('New') or self.sequence_i == 'New':
+    #         self.write({'sequence_i': self.env['ir.sequence'].next_by_code('tech.budget.investis')})
+    #     return True
 
 
     @api.depends("sequence", "sequence_f", "sequence_i", "type_budget", "date_debut")
