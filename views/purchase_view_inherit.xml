@@ -273,7 +273,7 @@
                 </xpath>
             </field>
         </record> -->
-        
+<!--         
         <record id="tech_budget_inherit_form" model="ir.ui.view">
             <field name="name">tech.budget.inherit.form</field>
             <field name="model">tech.budget</field>
@@ -284,9 +284,12 @@
                     <field name="sequence_i" invisible='0'/>
                 </xpath>
             </field>
+        </record> -->
+        
+        <record model="res.groups" id="wt_purchase_request_extend.group_purchase_request_responsible">
+            <field name="name">Validateur</field>
         </record>
-        
-        
+
         <record id="view_decision_bidder_tech_inherit" model="ir.ui.view">
                         <field name="name">decision.bidder.form.inherit</field>
                         <field name="model">purchase.requisition</field>
