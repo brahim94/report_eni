@@ -147,7 +147,7 @@
                                 <tr >
                                     <td style="text-align: center" class="bord"><span t-field="line.sequence"/></td>
                                     <td style="text-align: center" class="bord"><span t-field="line.product_id"/></td>                                    
-                                    <td style="text-align: center" class="bord"><span t-field="line.product_id.name"/></td>                                    
+                                    <td style="text-align: center" class="bord"><span t-field="line.description"/></td>                                    
                                     <td style="text-align: center" class="bord"><span t-field="line.product_uom"/></td>
                                     <td style="text-align: center" class="bord"><span t-field="line.product_qty"/></td>
                                     <td class="bord empty"></td>

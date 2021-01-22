@@ -15,11 +15,12 @@ class tech_reports_extention(models.Model):
         ('done', 'Fournisseur choisi'),
         ('cancel', 'Cancelled')
     ]
-
+    
     state_bc_order = fields.Selection(PURCHASE_ORDER_BC_STATE, compute='_set_bc_order_state')
     lot_number = fields.Char('N° de lot')
     order_date = fields.Date('Order Date')
-    
+    description_name = fields.Text(string="Description", related='product_id.description')
+
     def action_fournisseur_choisi(self):
         return self.write({'state': "done"})
 
@@ -47,6 +48,7 @@ class tech_order_line(models.Model):
     _inherit = 'purchase.order.line'
 
     article_number = fields.Char('Article N°')
+    description = fields.Text(related='product_id.description')
 
     @api.model
     def create(self, vals):
@@ -235,6 +237,17 @@ class TechBudget(models.Model):
     
     # sequence_f = fields.Char(string='Sequence func', readonly="1")
     # sequence_i = fields.Char(string='Sequence inv', readonly="1")    
+    
+    # def generate_budget_no(self):
+    #     # Set the sequence number regarding the requisition type
+    #     if self.sequence == 'New':
+    #         if self.type_budget == 'chb':
+    #             self.sequence = self.env['ir.sequence'].next_by_code('tech.budget')
+    #         elif self.type_budget == 'functionment':
+    #             self.sequence = self.env['ir.sequence'].next_by_code('tech.budget.function')
+    #         elif self.type_budget == 'investment':
+    #             self.sequence = self.env['ir.sequence'].next_by_code('tech.budget.investis')
+            
     tech_budget_line = fields.One2many(copy=True)
 
     # def generate_sequence_one(self):
