@@ -220,8 +220,18 @@
                         <xpath expr="//field[@name='purchase_order_id_bc']" position="replace">
                             <field name="purchase_order_id_bc" domain="[('requisition_id', '=', purchase_requisition_bc), ('requisition_id', '!=', False), ('state', '=', 'done')]" attrs="{'invisible': [('is_bc_execution', '=', False), ('is_execution_convention', '=', False)]}"/>
                         </xpath>
+                        <xpath expr="//button[@name='print_commencement_order']" position="attributes">
+                                <attribute name="string">Bon d'exécution</attribute>
+                                <attribute name="groups">wt_purchase_request_extend.group_purchase_request_responsible</attribute>
+                        
+                        </xpath>
+                        <xpath expr="//button[@name='generate_miss_model']" position="attributes">
+                                <attribute name="invisible">1</attribute>
+                        
+                        </xpath>
+
                         <xpath expr="//button[@name='print_commencement_order']" position="after">
-                                  <button name="print_b_cmd" string="Bon de commande" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('state', '!=', 'engagement'), ('is_bc_execution', '=', False)]}"/>        
+                                  <button name="print_b_cmd" string="Bon de commande" type="object" class="oe_highlight" attrs="{'invisible': ['|', ('state', '!=', 'engagement'), ('is_bc_execution', '=', False)]}" groups="wt_purchase_request_extend.group_purchase_request_responsible"/>        
                         </xpath>
 
                         <xpath expr="//button[@name='print_engagement']" position="attributes">
@@ -254,6 +264,9 @@
                          <field name="state" position="attributes">
                             <attribute name="attrs">{'invisible': [('is_req', '=', False)]}</attribute>
                         </field>
+                        <xpath expr="//field[@name='description']" position="after">
+                                <field name="viewd_approved" attrs="{'readonly':[('state','not in',['draft'])]}"/> 
+                         </xpath>
                         </field>
         </record>
 
@@ -267,20 +280,34 @@
                 </xpath>
             </field>
         </record>
-<!--         
+        
         <record id="tech_budget_inherit_header" model="ir.ui.view">
             <field name="name">tech.budget.inherit.header</field>
             <field name="model">tech.budget</field>
             <field name="inherit_id" ref="tech_budget.view_tech_budget_form"/>
             <field name="arch" type="xml">
                 <xpath expr="//form/header" position="inside">
-                    <button name="generate_sequence_one" string="Generate Sequence" type="object" attrs="{'invisible': [('type_budget', '!=', 'chb')]}"/>
-                    <button name="generate_sequence_two" string="Generate Sequence" type="object" attrs="{'invisible': [('type_budget', '!=', 'functionment')]}"/>
-                    <button name="generate_sequence_three" string="Generate Sequence" type="object" attrs="{'invisible': [('type_budget', '!=', 'investment')]}"/>
+                    <button name="generate_budget_no" string="Generate Sequence" type="object" />
                 </xpath>
             </field>
-        </record> -->
-<!--         
+        </record>
+
+        <menuitem name="Opérations" id="tech_budget.menu_engag" parent="tech_budget.menu_root"  sequence="115" 
+    groups="base.group_user"/>
+        
+        <menuitem name="Exécution Marché" id="tech_budget.menu_market_executi" parent="tech_budget.menu_engag"
+              action="wt_purchase_request_extend.action_market_execution" groups="base.group_user" sequence="1"/>
+
+        <menuitem name="Exécution BC" id="tech_budget.menu_executi_bc" parent="tech_budget.menu_engag"
+              action="wt_purchase_request_extend.action_bc_execution" groups="base.group_user" sequence="2"/>
+        
+        <menuitem name="Execution Convention" id="tech_budget.menu_exec_conven" parent="tech_budget.menu_engag"
+              action="wt_purchase_request_extend.action_convention_execution" groups="base.group_user" sequence="3"/>
+    
+        <menuitem name="Exécution Régie" id="tech_budget.menu_exec_regi" parent="tech_budget.menu_engag"
+              action="wt_purchase_request_extend.action_regie_execution" groups="base.group_user" sequence="4"/>
+    
+<!--    
         <record id="tech_budget_inherit_form" model="ir.ui.view">
             <field name="name">tech.budget.inherit.form</field>
             <field name="model">tech.budget</field>

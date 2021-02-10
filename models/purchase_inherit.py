@@ -59,6 +59,7 @@ class tech_order_line(models.Model):
 class purchase_riquisition(models.Model):
     _inherit = 'purchase.requisition'
 
+
     def print_consultant_report(self):
         return self.env.ref('tech_reports_extention.action_report_examen').report_action(self)
 
@@ -235,19 +236,30 @@ class TechBudget(models.Model):
     #     return super(TechBudget, self).create(vals)
     
     
-    # sequence_f = fields.Char(string='Sequence func', readonly="1")
-    # sequence_i = fields.Char(string='Sequence inv', readonly="1")    
+    sequence_f = fields.Char(string='Sequence func', readonly="1")
+    sequence_i = fields.Char(string='Sequence inv', readonly="1")    
     
     # def generate_budget_no(self):
-    #     # Set the sequence number regarding the requisition type
     #     if self.sequence == 'New':
     #         if self.type_budget == 'chb':
     #             self.sequence = self.env['ir.sequence'].next_by_code('tech.budget')
-    #         elif self.type_budget == 'functionment':
+    #         if self.type_budget == 'functionment':
     #             self.sequence = self.env['ir.sequence'].next_by_code('tech.budget.function')
     #         elif self.type_budget == 'investment':
     #             self.sequence = self.env['ir.sequence'].next_by_code('tech.budget.investis')
+    #         return True
             
+# def create(self,vals):
+#     if vals.get('sequence', 'New') == 'New':
+#         type_budget = vals.get('type_budget', False)
+#         if type_budget == 'chb':
+#             vals['sequence'] = self.env['ir.sequence'].next_by_code('tech.budget')
+#         if type_budget == 'functionment':
+#             vals['sequence'] = self.env['ir.sequence'].next_by_code('tech.budget.function')
+#         elif type_budget == 'investment':
+#             vals['sequence'] = self.env['ir.sequence'].next_by_code('tech.budget.investis')
+#         return super(TechBudget, self).create(vals)
+
     tech_budget_line = fields.One2many(copy=True)
 
     # def generate_sequence_one(self):
@@ -266,29 +278,27 @@ class TechBudget(models.Model):
     #     return True
 
 
-    # @api.depends("sequence", "sequence_f", "sequence_i", "type_budget", "date_debut")
+    # @api.depends("sequence", "type_budget", "date_debut")
     # def _compute_is_name(self):
     #     for rec in self:
     #         type_budget = ''
     #         if rec.type_budget == 'chb':
     #             type_budget = 'C'
-    #             rec.name = str(type_budget) + '-'  + str(rec.sequence) + '-' + str(rec.date_debut)            
     #         elif rec.type_budget == 'functionment':
     #             type_budget = 'F'
-    #             rec.name = str(type_budget) + '-'  + str(rec.sequence_f) + '-' + str(rec.date_debut)            
     #         elif rec.type_budget == 'investment':
     #             type_budget = 'I'
-    #             rec.name = str(type_budget) + '-' + str(rec.sequence_i) + '-' + str(rec.date_debut)           
+    #         rec.name = str(type_budget) + '-' + str(rec.sequence) + '-' + str(rec.date_debut)           
 
 class tech_reports_request(models.Model):
     _inherit = 'purchase.request'
 
     PURCHASE_REQ_BC_STATE = [
         ("draft", "Brouillon"),
-        ("to_be_approve", "Apprové"),
+        ("to_be_approve", "Approuvé"),
         ("to_approve", "Validé"),
         ("approved", "Qualifié"),
-        ("done", "Clauturé"),
+        ("done", "Clôturé"),
         ("rejected", "Refusé"),
         ("cancelled", "Annulé")
     ]
@@ -302,3 +312,13 @@ class tech_reports_request(models.Model):
             purchase.state_req = purchase.state
 
     
+    viewd_approved = fields.Boolean(string='Vu et approuvé')
+    
+    @api.onchange("requested_by")
+    def onchange_requested_by(self):
+        employees = self.requested_by.employee_ids
+        self.department_id = (
+            employees[0].parent_id.department_id
+            if employees
+            else self.env["hr.department"] or False
+        )    
